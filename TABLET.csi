@@ -1,0 +1,12 @@
+[Options]
+1=#P0#=1:2:1:1	.
+[Version]
+1=#P0#=2008	.
+[History]
+1=#P0#=pi	#P1#=Form1.vb	#P2#=	#P3#=	#P4#=	#P5#=TABLET|Form1.vb	#P6#=32	#P7#=20171223074146	#P8#=False	#P9#=	.
+2=#P0#=ce	#P1#=DB_LOAD_EIDH	#P2#=Form2|DB_LOAD_EIDH	#P3#=M:jgiminsil.Form2.DB_LOAD_EIDH	#P4#=	#P5#=TABLET|Form2.vb	#P6#=74	#P7#=20171218075255	#P8#=False	#P9#=DB_LOAD_EIDH   [Form2.vb]	#P10#=14	.
+3=#P0#=ce	#P1#=Button8_Click	#P2#=Form2|Button8_Click	#P3#=M:jgiminsil.Form2.Button8_Click(System.Object,System.EventArgs)	#P4#=	#P5#=TABLET|Form2.vb	#P6#=96	#P7#=20171218073402	#P8#=False	#P9#=Button8_Click   [Form2.vb]	#P10#=46	.
+4=#P0#=ce	#P1#=DB_LOADpel	#P2#=Form2|DB_LOADpel	#P3#=M:jgiminsil.Form2.DB_LOADpel	#P4#=	#P5#=TABLET|Form2.vb	#P6#=74	#P7#=20171218073335	#P8#=False	#P9#=DB_LOADpel   [Form2.vb]	#P10#=38	.
+5=#P0#=ce	#P1#=Button1_Click_1	#P2#=Form2|Button1_Click_1	#P3#=M:jgiminsil.Form2.Button1_Click_1(System.Object,System.EventArgs)	#P4#=	#P5#=TABLET|Form2.vb	#P6#=96	#P7#=20171218073223	#P8#=False	#P9#=Button1_Click_1   [Form2.vb]	#P10#=17	.
+6=#P0#=ce	#P1#=LOAD_PEL	#P2#=Form2|LOAD_PEL	#P3#=M:jgiminsil.Form2.LOAD_PEL(System.String)	#P4#=	#P5#=TABLET|Form2.vb	#P6#=74	#P7#=20171218073134	#P8#=False	#P9#=LOAD_PEL   [Form2.vb]	#P10#=47	.
+7=#P0#=ce	#P1#=ButtonSave_Click	#P2#=Form2|ButtonSave_Click	#P3#=M:jgiminsil.Form2.ButtonSave_Click(System.Object,System.EventArgs)	#P4#=	#P5#=TABLET|Form2.vb	#P6#=96	#P7#=20171218073121	#P8#=False	#P9#=ButtonSave_Click   [Form2.vb]	#P10#=6	.
