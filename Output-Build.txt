@@ -1,0 +1,3 @@
+------ Build started: Project: WindowsApplication1, Configuration: Debug Any CPU ------
+WindowsApplication1 -> C:\Documents and Settings\jgiminsil\Desktop\Junnajir Giminsil Files\Visual Basic 2008\WindowsApplication1\WindowsApplication1\bin\Debug\WindowsApplication1.exe
+========== Build: 1 succeeded or up-to-date, 0 failed, 0 skipped ==========
