@@ -588,7 +588,7 @@ Partial Class neaPARAGG
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(971, 713)
+        Me.ClientSize = New System.Drawing.Size(1285, 713)
         Me.Controls.Add(Me.TREXON_EIDOS)
         Me.Controls.Add(Me.CSXOLIA)
         Me.Controls.Add(Me.OK_PROSU)

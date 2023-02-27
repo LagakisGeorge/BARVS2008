@@ -522,6 +522,7 @@ Partial Class ADDITPARAGG
         Me.HDH_YPARXOYSA.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11})
         Me.HDH_YPARXOYSA.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.HDH_YPARXOYSA.Location = New System.Drawing.Point(781, 30)
+        Me.HDH_YPARXOYSA.MultiSelect = False
         Me.HDH_YPARXOYSA.Name = "HDH_YPARXOYSA"
         Me.HDH_YPARXOYSA.Size = New System.Drawing.Size(272, 295)
         Me.HDH_YPARXOYSA.TabIndex = 12

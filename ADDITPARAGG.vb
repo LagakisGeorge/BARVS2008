@@ -111,7 +111,7 @@ Public Class ADDITPARAGG
         HDH_YPARXOYSA.Columns(2).TextAlign = HorizontalAlignment.Right
         HDH_YPARXOYSA.Columns(3).TextAlign = HorizontalAlignment.Right
         For X = 0 To DTT.Rows.Count - 1
-            Dim lvi As New ListViewItem(DTT(X)("ONO").ToString)
+            Dim lvi As New ListViewItem(DTT(X)("ONO").ToString + ";" + Str(DTT(X)("ID")))
             lvi.SubItems.Add(DTT(X)("POSO").ToString)
             'lvi.SubItems.Add(DTT(X)("PROSUETA").ToString)
             lvi.SubItems.Add(DTT(X)("TIMH").ToString)
@@ -1434,6 +1434,32 @@ err:
         '    Debug.WriteLine("Login Name: ΑΚΥΡΟ") '& dialog.LoginName)
         '    ' User clicked the Cancel button
         'End If
+    End Sub
+
+    Private Sub HDH_YPARXOYSA_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles HDH_YPARXOYSA.MouseClick
+        Dim A As Integer
+        Try
+
+            Dialog1.Text = HDH_YPARXOYSA.SelectedItems(0).Text
+            Dialog1.Text = Dialog1.Text + ";" + Str(HDH_YPARXOYSA.SelectedItems(0).Index)
+            Dialog1.p_AXIA = Replace(HDH_YPARXOYSA.SelectedItems(0).SubItems.Item(3).Text, ",", ".")
+            Dialog1.ShowDialog()
+
+
+        Catch ex As Exception
+            A = 1
+        End Try
+
+
+
+
+
+
+
+
+
+
+
     End Sub
 
 

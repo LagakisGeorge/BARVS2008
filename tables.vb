@@ -72,7 +72,7 @@
             ADDITPARAGG.b_trapezi.Text = "Tραπ." + ckathg.Text
             ADDITPARAGG.p_IDPARAGG = IDPARAGG(index)
             ADDITPARAGG.ShowDialog()
-
+            Dialog1.p_IDPARAGG = IDPARAGG(index)
             ' Me.Close()
             ' Me.Hide()
 
@@ -127,7 +127,7 @@
 
 
         Dim DTT As New DataTable
-        ExecuteSQLQuery("select ONO, ID,KATEILHMENO,SYNOLO,IDPARAGG,(SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=TABLES.IDPARAGG) as TREX FROM TABLES WHERE NUM1=" + Str(gUser) + " ORDER BY ONO", DTT)
+        ExecuteSQLQuery("select ONO, ID,isnull(KATEILHMENO,0) as KATEILHMENO ,isnull(SYNOLO,0) as SYNOLO,ISNULL(IDPARAGG,0) AS IDPARAGG ,(SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=TABLES.IDPARAGG) as TREX FROM TABLES WHERE NUM1=" + Str(gUser) + " ORDER BY ONO", DTT)
 
 
         ' ExecuteSQLQuery("SELECT ONO,POSO,TIMH,POSO*TIMH AS AJ FROM PARAGG WHERE IDPARAGG=" + Str(p_IDPARAGG), DT)

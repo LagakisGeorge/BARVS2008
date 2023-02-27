@@ -80,12 +80,15 @@ Public Class neaPARAGG
         EIDH.Visible = False
 
         CreateMyListView1()
-        'CreateEIDHListView()
+        ' CreateEIDHListView()
 
         ' Add the ListView to the control collection.
-        Me.Controls.Add(EIDHVIEW)
+
         '// start event handling at any time during program execution.
-        AddHandler EIDHVIEW.Click, AddressOf EIDHView_Click
+        'AddHandler EIDHVIEW.Click, AddressOf EIDHView_Click
+        ' AddHandler EIDHVIEW.DoubleClick, AddressOf EIDHView_DoubleClick
+        ' Me.Controls.Add(EIDHVIEW)
+
 
 
         ListParagg.Columns(0).Text = "ΟΝΟΜΑ"
@@ -106,7 +109,13 @@ err:
         MsgBox(Err.Description, MsgBoxStyle.Critical, "Error")
     End Sub
 
+    Private Sub EIDHView_DoubleClick(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Dim A As Integer
+        A = 1
 
+
+
+    End Sub
 
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -417,7 +426,7 @@ err:
         '' Add the ListView to the control collection.
         'Me.Controls.Add(EIDHVIEW)
         ''// start event handling at any time during program execution.
-        'AddHandler EIDHVIEW.Click, AddressOf EIDHVIEW_Click
+        AddHandler EIDHVIEW.Click, AddressOf EIDHView_Click
 
     End Sub 'CreateMyListView
 
@@ -653,7 +662,7 @@ err:
         Dim DT As New DataTable
 
         Dim printer As New myPrinter
-        printer.ektypvths = "Posiflex"
+        printer.ektypvths = "CITIZEN CT-S851II"
         Dim MDATE As String
         If InStr(gCONNECT, "MDB") > 0 Then
             MDATE = "#" + Format(Now, "dd/MM/yyyy") + "#"
@@ -733,7 +742,7 @@ err:
 
             ' Loop through result strings with For Each.
 
-           
+
 
 
 
@@ -891,9 +900,7 @@ err:
 
     End Sub
 
-    Private Sub KATHG_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KATHG.SelectedIndexChanged
-
-    End Sub
+   
 
     Private Sub PROSU2_Click1(ByVal sender As Object, ByVal e As System.EventArgs) Handles PROSU2.Click
 
@@ -920,7 +927,7 @@ err:
 
     End Sub
 
-  
+
 
     Private Sub OK_PROSU_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_PROSU.Click
         'προσθετα
@@ -995,7 +1002,7 @@ err:
 
     End Sub
 
-    
+
     Private Sub bale1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bale1.Click
         'ξανατυπωνω την 1η σειρα
         Dim strI(5) As String
@@ -1062,4 +1069,6 @@ err:
 
 
     End Sub
+
+
 End Class
