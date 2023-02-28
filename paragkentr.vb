@@ -272,38 +272,39 @@ err:
 
         Else
             Dim DT As New DataTable
-            ExecuteSQLQuery("SELECT Sum(AJIA) AS JJ , TROPOS  FROM PARAGGMASTER GROUP BY TROPOS,IDBARDIA  HAVING  IDBARDIA=" + Str(gBardia), DT)
+            ExecuteSQLQuery("SELECT Sum(isnull(CASH,0)) AS CASH ,  Sum(isnull(PIS1,0)) AS PIS1 , Sum(isnull(PIS2,0)) AS PIS2 ,  Sum(isnull(KERA,0)) AS KERA  FROM PARAGGMASTER WHERE  IDBARDIA=" + Str(gBardia), DT)
             Dim MM As String = ""
             Dim CASH(5) As String
             Dim CASHTOT As Single = 0
+            MsgBox("Μετρ: " + DT(0)("CASH").ToString + "Πιστ1: " + DT(0)("pis1").ToString + "Πιστ2: " + DT(0)("PIS2").ToString + "Κερασμ: " + DT(0)("KERA").ToString)
 
-            For K As Integer = 0 To DT.Rows.Count - 1
-                If IsDBNull(DT(K)(0)) Or IsDBNull(DT(K)(1)) Then
-                Else
-                    Dim tropos As String = ""
-                    If DT(K)(1) = 1 Then
-                        tropos = "μετρητα"
-                    End If
-                    If DT(K)(1) = 2 Then
-                        tropos = "Καρτα 1"
-                    End If
-                    If DT(K)(1) = 3 Then
-                        tropos = "Καρτα 2"
-                    End If
-                    If DT(K)(1) = 4 Then
-                        tropos = "Κερασμενα "
-                    End If
+            'For K As Integer = 0 To DT.Rows.Count - 1
+            '    If IsDBNull(DT(K)(0)) Or IsDBNull(DT(K)(1)) Then
+            '    Else
+            '        Dim tropos As String = ""
+            '        If DT(K)(1) = 1 Then
+            '            tropos = "μετρητα"
+            '        End If
+            '        If DT(K)(1) = 2 Then
+            '            tropos = "Καρτα 1"
+            '        End If
+            '        If DT(K)(1) = 3 Then
+            '            tropos = "Καρτα 2"
+            '        End If
+            '        If DT(K)(1) = 4 Then
+            '            tropos = "Κερασμενα "
+            '        End If
 
 
 
-                    MM = MM + tropos + " => " + Format(DT(K)(0), "####0.00") + Chr(13)
-                    If DT(K)(1) < 5 Then
-                        CASH(DT(K)(1)) = DT(K)(0).ToString
-                        CASHTOT = CASHTOT + DT(K)(0)
-                    End If
-                End If
+            '        MM = MM + tropos + " => " + Format(DT(K)(0), "####0.00") + Chr(13)
+            '        If DT(K)(1) < 5 Then
+            '            CASH(DT(K)(1)) = DT(K)(0).ToString
+            '            CASHTOT = CASHTOT + DT(K)(0)
+            '        End If
+            '    End If
 
-            Next
+            'Next
 
             Dim dt1 As New DataTable
             ExecuteSQLQuery("select count(*) FROM TABLES WHERE KATEILHMENO=1 AND NUM1=" + Str(gUser), dt1)
@@ -328,7 +329,7 @@ err:
 
 
 
-                ExecuteSQLQuery("select TRAPEZI,AJIA,TROPOS,CH1,CH2 FROM PARAGGMASTER WHERE IDBARDIA=" + Str(gBardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
+                ExecuteSQLQuery("select TRAPEZI,AJIA,CASH,PIS1,PIS2,KERA,TROPOS,CH1,CH2 FROM PARAGGMASTER WHERE IDBARDIA=" + Str(gBardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
 
                 vv.FontSize = 10
                 vv.FontBold = True
@@ -344,73 +345,49 @@ err:
                 vv.Print(GeRGAZ + "  //  " + Format(Now, "dd/MM/yyyy  hh:mm"))
 
                 For K = 0 To DT2.Rows.Count - 1
-                    m = DT2(K)("TROPOS").ToString
+                    '    m = DT2(K)("TROPOS").ToString
 
-                    
-
-
-
-
+                    '    If m = m2 Then
+                    '        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
+                    '    Else
 
 
-                    If m = m2 Then
-                        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
-                    Else
-
-
-                        Dim tropos2 As String = ""
-                        If m2 = "1" Then
-                            tropos2 = "μετρητα"
-                        End If
-                        If m2 = "2" Then
-                            tropos2 = "Καρτα 1"
-                        End If
-                        If m2 = "3" Then
-                            tropos2 = "Καρτα 2"
-                        End If
-                        If m2 = "4" Then
-                            tropos2 = "Κερασμενα "
-                        End If
+                    '        Dim tropos2 As String = ""
+                    '        If m2 = "1" Then
+                    '            tropos2 = "μετρητα"
+                    '        End If
+                    '        If m2 = "2" Then
+                    '            tropos2 = "Καρτα 1"
+                    '        End If
+                    '        If m2 = "3" Then
+                    '            tropos2 = "Καρτα 2"
+                    '        End If
+                    '        If m2 = "4" Then
+                    '            tropos2 = "Κερασμενα "
+                    '        End If
 
 
 
-                        vv.Print("=====================")
-                        ' vv.Print("Σύνολο " + m2 + " ....." + Format(s, "###0.00"))
-                        vv.Print("Σύνολο " + tropos2 + " ....." + Format(s, "###0.00"))
-                        s = 0
-                        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
-                        m2 = m
-                    End If
+                    '        vv.Print("=====================")
+                    '        vv.Print("Σύνολο " + m2 + " ....." + Format(s, "###0.00"))
+                    '        vv.Print("Σύνολο " + tropos2 + " ....." + Format(s, "###0.00"))
+                    '        s = 0
+                    '        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
+                    '        m2 = m
+                    '    End If
 
                     vv.Print(DT2(K)("TRAPEZI").ToString + " / " + Format(If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA")), "###0.00") + " / " + DT2(K)("TROPOS").ToString + " /  " + DT2(K)("CH1").ToString + " /  " + DT2(K)("CH2").ToString)
-
+                    vv.Print("Μετρ: " + DT2(0)("CASH").ToString + "Πιστ1: " + DT2(0)("pis1").ToString + "Πιστ2: " + DT2(0)("PIS2").ToString + "Κερασμ: " + DT2(0)("KERA").ToString)
 
 
 
                 Next
-
+                vv.Print("ΣΥΝΟΛΑ-----------------------")
+                vv.Print("Μετρ: " + DT2(0)("CASH").ToString + "Πιστ1: " + DT2(0)("pis1").ToString + "Πιστ2: " + DT2(0)("PIS2").ToString + "Κερασμ: " + DT2(0)("KERA").ToString)
                 vv.Print("=====================")
 
 
-                Dim tropos As String = ""
-                If m2 = "1" Then
-                    tropos = "μετρητα"
-                End If
-                If m2 = "2" Then
-                    tropos = "Καρτα 1"
-                End If
-                If m2 = "3" Then
-                    tropos = "Καρτα 2"
-                End If
-                If m2 = "4" Then
-                    tropos = "Κερασμενα "
-                End If
-
-
-
-
-
-                vv.Print("Σύνολο " + tropos + " ....." + Format(s, "###0.00"))
+                
 
                 vv.Print(".")
                 vv.Print(".")

@@ -1389,16 +1389,34 @@ err:
             'ExecuteSQLQuery("SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=" + Str(p_IDPARAGG), DT)
             'Dim SS As String = Replace(DT(0)(0).ToString, ",", ".")
 
-            ExecuteSQLQuery("SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=" + Str(p_IDPARAGG), DT)
+            ExecuteSQLQuery("SELECT  str(round(SUM(POSO*TIMH),2),6,2 ) FROM PARAGG WHERE NUM1 IS NULL AND  IDPARAGG=" + Str(p_IDPARAGG), DT)
             Dim SS As String = Replace(DT(0)(0).ToString, ",", ".")
             If SS = Nothing Then
                 SS = "0"
             End If
+            
+
 
             'ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=" + Str(SS) + ",TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
 
-            ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=" + Str(SS) + ",TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
+            ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=" + SS + ",TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
             ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=0,IDPARAGG=0 WHERE ONO='" + p_Trapezi + "'", DT)
+
+            If F.LoginName = 1 Then
+                ExecuteSQLQuery("UPDATE  PARAGGMASTER SET CASH=isnull(CASH,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
+            ElseIf F.LoginName = 2 Then
+                ExecuteSQLQuery("UPDATE  PARAGGMASTER SET PIS1=isnull(PIS1,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
+            ElseIf F.LoginName = 3 Then
+                ExecuteSQLQuery("UPDATE  PARAGGMASTER SET PIS2=isnull(PIS2,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
+            ElseIf F.LoginName = 4 Then
+                ExecuteSQLQuery("UPDATE  PARAGGMASTER SET KERA=isnull(KERA,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
+            End If
+
+
+
+
+
+
             ' ExecuteSQLQuery("delete from PARAGG WHERE IDPARAGG=0 ", DT)
             Me.Close()
 
@@ -1408,7 +1426,7 @@ err:
 
 
 
-        ''
+            ''
     End Sub
 
     Public Sub ShowDialogBox()
@@ -1439,9 +1457,9 @@ err:
     Private Sub HDH_YPARXOYSA_MouseClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles HDH_YPARXOYSA.MouseClick
         Dim A As Integer
         Try
-
+            Dialog1.p_IDPARAGG = p_IDPARAGG
             Dialog1.Text = HDH_YPARXOYSA.SelectedItems(0).Text
-            Dialog1.Text = Dialog1.Text + ";" + Str(HDH_YPARXOYSA.SelectedItems(0).Index)
+            Dialog1.Text = Dialog1.Text + "              ;" + Str(HDH_YPARXOYSA.SelectedItems(0).Index) + ";" + Str(p_IDPARAGG) + ";" + Replace(HDH_YPARXOYSA.SelectedItems(0).SubItems.Item(3).Text, ",", ".")
             Dialog1.p_AXIA = Replace(HDH_YPARXOYSA.SelectedItems(0).SubItems.Item(3).Text, ",", ".")
             Dialog1.ShowDialog()
 

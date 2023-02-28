@@ -190,19 +190,26 @@
 
 
             ' LOAD_file("SELECT ONO,ID FROM " + p_Table, lv, 2)
-            LIST_SHOW()
+        LIST_SHOW(0)
 
     End Sub
 
-    Sub LIST_SHOW()
+    Sub LIST_SHOW(ByVal categ As Long)
         If p_Table = "EIDH" Then
-            LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " order by ONO", lv, 4)
+            If categ > 0 Then
+                LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " where KATHG=" + Str(categ) + "  order by ONO", lv, 4)
+
+            Else
+                LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%' order by ONO", lv, 4)
+
+            End If
+            'LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%' order by ONO", lv, 4)
         ElseIf p_Table = "ERGAZ" Then
 
-            LOAD_file("SELECT EPO,ID FROM " + p_Table, lv, 2)
+            LOAD_file("SELECT EPO,ID FROM " + p_Table + " where EPO LIKE '%" + TextBox1.Text + "%'", lv, 2)
         Else
 
-            LOAD_file("SELECT ONO,ID FROM " + p_Table, lv, 2)
+            LOAD_file("SELECT ONO,ID FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%' ", lv, 2)
         End If
     End Sub
 
@@ -227,7 +234,7 @@
         num2.Visible = False
         XAR1.Visible = False
         XAR2.Visible = False
-        LIST_SHOW()
+        LIST_SHOW(0)
         ' LOAD_file("SELECT ONO,ID FROM XAR1", lv, 2)
     End Sub
 
@@ -251,7 +258,7 @@
         XAR1.Visible = False
         XAR2.Visible = False
 
-        LIST_SHOW()
+        LIST_SHOW(0)
         ' LOAD_file("SELECT ONO,ID FROM XAR2", lv, 2)
     End Sub
 
@@ -272,7 +279,7 @@
 
 
         'LOAD_file("SELECT ONO,ID FROM EIDH", lv, 2)
-        LIST_SHOW()
+        LIST_SHOW(0)
         ltimh.Visible = True
 
         timh.Visible = True
@@ -549,7 +556,7 @@
         lv.Columns(0).Text = "Ονομα"
         lv.Columns(0).Width = 300
         lv.Columns(1).Text = "ID"
-        LIST_SHOW()
+        LIST_SHOW(0)
 
     End Sub
 
@@ -588,7 +595,7 @@
 
 
         ExecuteSQLQuery("DELETE  from " + p_Table + " WHERE ID=" + Str(fid), DTT)
-        LIST_SHOW()
+        LIST_SHOW(0)
         ono.Text = ""
         timh.Text = ""
         num2.Text = ""
@@ -606,7 +613,9 @@
 
     Private Sub listView1_Click(ByVal sender As System.Object, ByVal e As EventArgs)
         ' MsgBox(listView1.SelectedItems.Item(0).Text)
-        CKATHG.Text = listView1.SelectedItems.Item(0).Text
+        ckathg.Text = listView1.SelectedItems.Item(0).Text
+        LIST_SHOW(Val(Split(ckathg.Text, ";")(1)))
+
     End Sub
 
 
@@ -837,5 +846,12 @@
 
     Private Sub ono_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ono.TextChanged
 
+    End Sub
+
+    Private Sub TextBox1_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TextBox1.TextChanged
+        ' Dim dtt As New DataTable
+
+        ' ExecuteSQLQuery("select * from " + p_Table + " WHERE ID=" + Str(fid), dtt)
+        LIST_SHOW(0)
     End Sub
 End Class
