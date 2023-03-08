@@ -232,7 +232,7 @@ err:
         'CreateEIDHListView()
 
         ' MsgBox(listView1.SelectedItems.Item(0).Text)
-        CKATHG.Text = LISTVIEW1.SelectedItems.Item(0).Text
+        CKATHG.Text = LISTVIEW1.SelectedItems.Item(0).Text.Split(";")(1)
         ' EIDHVIEW = Nothing
         ' EIDHVIEW = New ListView
 
@@ -311,7 +311,7 @@ err:
 
 
         Dim DTT As New DataTable
-        ExecuteSQLQuery("select ONO, ID ,PICTURE FROM KATHG", DTT)
+        ExecuteSQLQuery("select ONO+';'+STR(ID) AS ONO, ID ,PICTURE FROM KATHG", DTT)
 
 
 
@@ -529,7 +529,7 @@ err:
 
 
         Dim DTT As New DataTable
-        ExecuteSQLQuery("select ONO, ID,TIMH,CH2,PICTURE,NUM2 FROM EIDH WHERE CH1 like '" + Trim(CKATHG.Text) + "%'", DTT)
+        ExecuteSQLQuery("select ONO, ID,TIMH,CH2,ISNULL(PICTURE,'') AS PICTURE,ISNULL(NUM2,0) AS NUM2 FROM EIDH WHERE KATHG = " + Trim(CKATHG.Text), DTT)
 
 
 
@@ -678,7 +678,12 @@ err:
         Dim DTT2 As New DataTable
         'ExecuteSQLQuery("SELECT * FROM XAR1", DTT2)
 
-        If Len(Trim(cPros)) = 0 Then cPros = "9999" ' ΓΙΑ  ΝΑ ΜΗΝ ΚΡΑΣΑΡΕΙ
+        If Len(Trim(cPros)) = 0 Then
+            cPros = "9999" ' ΓΙΑ  ΝΑ ΜΗΝ ΚΡΑΣΑΡΕΙ
+        Else
+            cPros = cPros
+        End If
+
 
         If Mid(cPros, Len(cPros), 1) = "," Then
             cPros = Mid(cPros, 1, Len(cPros) - 1)
@@ -694,7 +699,7 @@ err:
                 ' imgList.Images.Add(Bitmap.FromFile("default.png"))
                 'imgList.Images.Add(Bitmap.FromFile(DTT2(i)("PICTURE").ToString))
 
-                Dim item As New ListViewItem(DTT2(i)(2).ToString, i) ' RancomClass.Next(0, 10) Mod 2)
+                Dim item As New ListViewItem(DTT2(i)("ONO").ToString, i) ' RancomClass.Next(0, 10) Mod 2)
                 Items.Add(item)
 
 
@@ -1395,13 +1400,6 @@ err:
                 SS = "0"
             End If
             
-
-
-            'ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=" + Str(SS) + ",TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
-
-            ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=" + SS + ",TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
-            ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=0,IDPARAGG=0 WHERE ONO='" + p_Trapezi + "'", DT)
-
             If F.LoginName = 1 Then
                 ExecuteSQLQuery("UPDATE  PARAGGMASTER SET CASH=isnull(CASH,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
             ElseIf F.LoginName = 2 Then
@@ -1411,6 +1409,13 @@ err:
             ElseIf F.LoginName = 4 Then
                 ExecuteSQLQuery("UPDATE  PARAGGMASTER SET KERA=isnull(KERA,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
             End If
+
+            'ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=" + Str(SS) + ",TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
+
+            ExecuteSQLQuery("UPDATE PARAGGMASTER SET CH2='" + Format(Now(), "hh:mm") + "',AJIA=CASH+PIS1+PIS2+KERA,TROPOS=" + F.LoginName + " WHERE ID=" + Str(p_IDPARAGG), DT)
+            ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=0,IDPARAGG=0 WHERE ONO='" + p_Trapezi + "'", DT)
+
+
 
 
 

@@ -1,4 +1,11 @@
 ﻿Public Class ARXEIA0
+    'Dim test As New CustomForm("workflow")
+
+    
+
+    'Private Sub Button1_Click(ByVal sender As Object, ByVal e As EventArgs) Handles Button1.Click
+    '    MsgBox(test.GrantAccess)
+    'End Sub
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles kathg.Click
         'arxeia.p_Table = "KATHG"
@@ -7,7 +14,7 @@
         Dim F As New arxeia
 
         F.p_Table = "KATHG"
-        F.ShowDialog()
+        F.Show()
 
 
 
@@ -18,7 +25,7 @@
         Dim F As New arxeia
 
         F.p_Table = "EIDH"
-        F.ShowDialog()
+        F.Show()
 
     End Sub
 
@@ -27,7 +34,7 @@
         Dim F As New arxeia
 
         F.p_Table = "XAR1"
-        F.ShowDialog()
+        F.Show()
 
 
 
@@ -38,7 +45,7 @@
         Dim F As New arxeia
 
         F.p_Table = "TABLES"
-        F.ShowDialog()
+        F.Show()
 
 
 
@@ -49,11 +56,11 @@
         Dim F As New arxeia
 
         F.p_Table = "ERGAZ"
-        F.ShowDialog()
+        F.Show()
 
     End Sub
 
-   
+
 
     Private Sub Button7_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button7.Click
         Dim A As Integer
@@ -63,15 +70,17 @@
         If A = vbYes Then
             Dim CCC As String = InputBox("ΔΩΣΕ KΩΔΙΚΟ ΔΙΕΥΘΥΝΤΗ ")
 
+            If CCC = "3921" Then
+                ExecuteSQLQuery("DELETE FROM PARAGG", DT)
+                ExecuteSQLQuery("DELETE FROM PARAGGMASTER", DT)
+                ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=0,IDPARAGG=0", DT)
+            End If
 
-            ExecuteSQLQuery("DELETE FROM PARAGG", DT)
-            ExecuteSQLQuery("DELETE FROM PARAGGMASTER", DT)
-            ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=0,IDPARAGG=0", DT)
 
         End If
     End Sub
 
-   
+
 
     Private Sub Button9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.Close()
@@ -106,13 +115,25 @@
         'GridView1.DataMember = "PEL"
     End Sub
 
-    
+
     Private Sub trapezia_servitoros_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles trapezia_servitoros.Click
         Dim F As New TRAPEZIAANASERVITORO
 
         'F.p_Table = "ERGAZ"
-        F.ShowDialog()
+        F.Show()
 
+    End Sub
+
+    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim CCC As String = InputBox("ΔΩΣΕ KΩΔΙΚΟ ΔΙΕΥΘΥΝΤΗ ")
+
+        If CCC = "3921" Then
+            gIsAdmin = 1
+            Dim CC1 As String = InputBox("ΔΩΣΕ αριθμο σερβιτόρου ")
+            gUser = Val(CC1)
+
+
+        End If
     End Sub
 End Class
 

@@ -28,6 +28,7 @@ Module Module1
     Public gFileEidon As String  ' = Split(lineexcel, ";")(1)
 
     Public gUser As Integer ' τον user τον καταλαβαίνει από το tablet
+    Public gIsAdmin As Integer ' einai o dieythintis
 
     'Module Module1
     Dim WithEvents pd As PrintDocument = New PrintDocument

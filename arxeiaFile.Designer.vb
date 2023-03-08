@@ -54,7 +54,6 @@ Partial Class arxeia
         Me.ColumnHeader5 = New System.Windows.Forms.ColumnHeader
         Me.ColumnHeader6 = New System.Windows.Forms.ColumnHeader
         Me.ColumnHeader7 = New System.Windows.Forms.ColumnHeader
-        Me.FocusedTextBox1 = New FocusedTextBox.FocusedTextBox
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog
         Me.Button2 = New System.Windows.Forms.Button
         Me.TextBox1 = New System.Windows.Forms.TextBox
@@ -371,17 +370,6 @@ Partial Class arxeia
         Me.PROSUETA.UseCompatibleStateImageBehavior = False
         Me.PROSUETA.View = System.Windows.Forms.View.Details
         '
-        'FocusedTextBox1
-        '
-        Me.FocusedTextBox1.EnterFocusColor = System.Drawing.Color.Empty
-        Me.FocusedTextBox1.LeaveFocusColor = System.Drawing.Color.Empty
-        Me.FocusedTextBox1.Location = New System.Drawing.Point(165, 596)
-        Me.FocusedTextBox1.Mandatory = False
-        Me.FocusedTextBox1.MandatoryColor = System.Drawing.Color.Empty
-        Me.FocusedTextBox1.Name = "FocusedTextBox1"
-        Me.FocusedTextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.FocusedTextBox1.TabIndex = 55
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
@@ -419,7 +407,6 @@ Partial Class arxeia
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.FocusedTextBox1)
         Me.Controls.Add(Me.PROSUETA)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.XAR1)
@@ -430,6 +417,7 @@ Partial Class arxeia
         Me.Controls.Add(Me.KOD)
         Me.Name = "arxeia"
         Me.Text = "Form6"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel2.ResumeLayout(False)
         Me.TableLayoutPanel2.PerformLayout()
@@ -461,7 +449,6 @@ Partial Class arxeia
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents nea As System.Windows.Forms.Button
     Friend WithEvents edit As System.Windows.Forms.Button
-    Friend WithEvents FocusedTextBox1 As FocusedTextBox.FocusedTextBox
     Friend WithEvents ono As FocusedTextBox.FocusedTextBox
     Friend WithEvents timh As FocusedTextBox.FocusedTextBox
     Friend WithEvents ckathg As FocusedTextBox.FocusedTextBox

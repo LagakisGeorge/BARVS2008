@@ -21,6 +21,7 @@ Public Class paragkentr
         On Error GoTo err
         Dim m_mess_pel As String
         Dim m_user As String
+        gIsAdmin = 0
         Me.Show()
 
         Using sr As StreamReader = New StreamReader("config.ini", System.Text.Encoding.Default)
@@ -228,7 +229,9 @@ err:
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bNeaParaggelia.Click
         ' NEAPARAGG.ShowDialog()
         Dim F As New tables
-        F.ShowDialog()
+        F.MdiParent = MDIParent1
+
+        F.Show()
         F = Nothing
 
 
@@ -240,7 +243,10 @@ err:
     End Sub
 
     Private Sub arxeio_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles arxeio.Click
-        ARXEIA0.ShowDialog()
+        ARXEIA0.MdiParent = MDIParent1
+
+        ARXEIA0.Show()
+
     End Sub
 
     Private Sub Label2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -266,7 +272,8 @@ err:
         '    End If
         'End If
         If gBardia = 0 Then
-            BARDIES.ShowDialog()
+            BARDIES.MdiParent = MDIParent1
+            BARDIES.Show()
 
 
 
@@ -318,92 +325,93 @@ err:
 
 
 
-
+            Dim DT2 As New DataTable
 
             Dim ANS As Integer = MsgBox(MM, MsgBoxStyle.YesNo, "ΚΛΕΙΣΙΜΟ ΒΑΡΔΙΑΣ")
-            Dim DT2 As New DataTable
+            '
             If ANS = MsgBoxResult.Yes Then
-
-                ExecuteSQLQuery("select *,(SELECT EPO FROM ERGAZ WHERE ID=BARDIA.IDERGAZ) AS ONOMA FROM BARDIA WHERE ID=" + Str(gBardia), DT2)
-                GeRGAZ = DT2(0)("ONOMA").ToString
-
-
-
-                ExecuteSQLQuery("select TRAPEZI,AJIA,CASH,PIS1,PIS2,KERA,TROPOS,CH1,CH2 FROM PARAGGMASTER WHERE IDBARDIA=" + Str(gBardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
-
-                vv.FontSize = 10
-                vv.FontBold = True
-                Dim m As String
-                If DT2.Rows.Count > 0 Then
-                    m = DT2(0)("TROPOS").ToString
-                Else
-                    m = ""
-                End If
-                Dim m2 As String = m
-
-                Dim s As Single = 0
-                vv.Print(GeRGAZ + "  //  " + Format(Now, "dd/MM/yyyy  hh:mm"))
-
-                For K = 0 To DT2.Rows.Count - 1
-                    '    m = DT2(K)("TROPOS").ToString
-
-                    '    If m = m2 Then
-                    '        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
-                    '    Else
-
-
-                    '        Dim tropos2 As String = ""
-                    '        If m2 = "1" Then
-                    '            tropos2 = "μετρητα"
-                    '        End If
-                    '        If m2 = "2" Then
-                    '            tropos2 = "Καρτα 1"
-                    '        End If
-                    '        If m2 = "3" Then
-                    '            tropos2 = "Καρτα 2"
-                    '        End If
-                    '        If m2 = "4" Then
-                    '            tropos2 = "Κερασμενα "
-                    '        End If
+                TYPONO_BARDIA(gBardia)
+                'Dim DT2 As New DataTable
+                '    ExecuteSQLQuery("select *,(SELECT EPO FROM ERGAZ WHERE ID=BARDIA.IDERGAZ) AS ONOMA FROM BARDIA WHERE ID=" + Str(gBardia), DT2)
+                '    GeRGAZ = DT2(0)("ONOMA").ToString
 
 
 
-                    '        vv.Print("=====================")
-                    '        vv.Print("Σύνολο " + m2 + " ....." + Format(s, "###0.00"))
-                    '        vv.Print("Σύνολο " + tropos2 + " ....." + Format(s, "###0.00"))
-                    '        s = 0
-                    '        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
-                    '        m2 = m
-                    '    End If
+                '    ExecuteSQLQuery("select TRAPEZI,AJIA,CASH,PIS1,PIS2,KERA,TROPOS,CH1,CH2 FROM PARAGGMASTER WHERE IDBARDIA=" + Str(gBardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
 
-                    vv.Print(DT2(K)("TRAPEZI").ToString + " / " + Format(If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA")), "###0.00") + " / " + DT2(K)("TROPOS").ToString + " /  " + DT2(K)("CH1").ToString + " /  " + DT2(K)("CH2").ToString)
-                    vv.Print("Μετρ: " + DT2(0)("CASH").ToString + "Πιστ1: " + DT2(0)("pis1").ToString + "Πιστ2: " + DT2(0)("PIS2").ToString + "Κερασμ: " + DT2(0)("KERA").ToString)
+                '    vv.FontSize = 10
+                '    vv.FontBold = True
+                '    Dim m As String
+                '    If DT2.Rows.Count > 0 Then
+                '        m = DT2(0)("TROPOS").ToString
+                '    Else
+                '        m = ""
+                '    End If
+                '    Dim m2 As String = m
+
+                '    Dim s As Single = 0
+                '    vv.Print(GeRGAZ + "  //  " + Format(Now, "dd/MM/yyyy  hh:mm"))
+
+                '    For K = 0 To DT2.Rows.Count - 1
+                '        '    m = DT2(K)("TROPOS").ToString
+
+                '        '    If m = m2 Then
+                '        '        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
+                '        '    Else
+
+
+                '        '        Dim tropos2 As String = ""
+                '        '        If m2 = "1" Then
+                '        '            tropos2 = "μετρητα"
+                '        '        End If
+                '        '        If m2 = "2" Then
+                '        '            tropos2 = "Καρτα 1"
+                '        '        End If
+                '        '        If m2 = "3" Then
+                '        '            tropos2 = "Καρτα 2"
+                '        '        End If
+                '        '        If m2 = "4" Then
+                '        '            tropos2 = "Κερασμενα "
+                '        '        End If
 
 
 
-                Next
-                vv.Print("ΣΥΝΟΛΑ-----------------------")
-                vv.Print("Μετρ: " + DT2(0)("CASH").ToString + "Πιστ1: " + DT2(0)("pis1").ToString + "Πιστ2: " + DT2(0)("PIS2").ToString + "Κερασμ: " + DT2(0)("KERA").ToString)
-                vv.Print("=====================")
+                '        '        vv.Print("=====================")
+                '        '        vv.Print("Σύνολο " + m2 + " ....." + Format(s, "###0.00"))
+                '        '        vv.Print("Σύνολο " + tropos2 + " ....." + Format(s, "###0.00"))
+                '        '        s = 0
+                '        '        s = s + If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA"))
+                '        '        m2 = m
+                '        '    End If
+
+                '        vv.Print(DT2(K)("TRAPEZI").ToString + " / " + Format(If(IsDBNull(DT2(K)("AJIA")), 0, DT2(K)("AJIA")), "###0.00") + " / " + DT2(K)("TROPOS").ToString + " /  " + DT2(K)("CH1").ToString + " /  " + DT2(K)("CH2").ToString)
+                '        vv.Print("Μετρ: " + DT2(0)("CASH").ToString + "Πιστ1: " + DT2(0)("pis1").ToString + "Πιστ2: " + DT2(0)("PIS2").ToString + "Κερασμ: " + DT2(0)("KERA").ToString)
 
 
-                
 
-                vv.Print(".")
-                vv.Print(".")
-                vv.Print("")
-                vv.Print("")
-                vv.Print("")
+                '    Next
+                '    vv.Print("ΣΥΝΟΛΑ-----------------------")
+                '    vv.Print("Μετρ: " + DT2(0)("CASH").ToString + "Πιστ1: " + DT2(0)("pis1").ToString + "Πιστ2: " + DT2(0)("PIS2").ToString + "Κερασμ: " + DT2(0)("KERA").ToString)
+                '    vv.Print("=====================")
 
-                vv.Print(".")
-                vv.Print("")
-                vv.Print("")
-                vv.Print("")
-                vv.Print("")
 
-                vv.EndDoc()
 
-                ' Exit Sub
+
+                '    vv.Print(".")
+                '    vv.Print(".")
+                '    vv.Print("")
+                '    vv.Print("")
+                '    vv.Print("")
+
+                '    vv.Print(".")
+                '    vv.Print("")
+                '    vv.Print("")
+                '    vv.Print("")
+                '    vv.Print("")
+
+                '    vv.EndDoc()
+
+                '    ' Exit Sub
 
 
 
@@ -437,6 +445,84 @@ err:
         End If
         CHECK_BARDIA()
 
+
+    End Sub
+
+    Public Sub TYPONO_BARDIA(ByVal Bardia)
+        Dim DT2 As New DataTable
+        ExecuteSQLQuery("select *,(SELECT EPO FROM ERGAZ WHERE ID=BARDIA.IDERGAZ) AS ONOMA FROM BARDIA WHERE ID=" + Str(Bardia), DT2)
+        GeRGAZ = DT2(0)("ONOMA").ToString
+
+
+
+        ExecuteSQLQuery("select TRAPEZI,AJIA,ISNULL(CASH,0) AS CASH,ISNULL(PIS1,0) AS PIS1,ISNULL(PIS2,0) AS PIS2,ISNULL(KERA,0) AS KERA,TROPOS,CH1,CH2 FROM PARAGGMASTER WHERE IDBARDIA=" + Str(Bardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
+
+        vv.FontSize = 10
+        vv.FontBold = True
+        Dim m As String
+        If DT2.Rows.Count > 0 Then
+            m = DT2(0)("TROPOS").ToString
+        Else
+            m = ""
+        End If
+        Dim m2 As String = m
+
+        Dim s As Single = 0
+        vv.Print(GeRGAZ + "  //  " + Format(Now, "dd/MM/yyyy  hh:mm") + " " + Str(Bardia))
+        Dim s1, s2, s3, s4 As Single
+        s1 = 0 : s2 = 0 : s3 = 0 : s4 = 0
+        Dim k As Integer
+        For k = 0 To DT2.Rows.Count - 1
+
+
+            vv.Print(DT2(k)("TRAPEZI").ToString + " / " + Format(If(IsDBNull(DT2(k)("AJIA")), 0, DT2(k)("AJIA")), "###0.00") + " / " + DT2(k)("TROPOS").ToString + " /  " + DT2(k)("CH1").ToString + " /  " + DT2(k)("CH2").ToString)
+            vv.Print("Μετρ: " + DT2(k)("CASH").ToString + "Πιστ1: " + DT2(k)("pis1").ToString + "Πιστ2: " + DT2(k)("PIS2").ToString + "Κερασμ: " + DT2(k)("KERA").ToString)
+            s1 = s1 + DT2(k)("CASH")
+            s2 = s2 + DT2(k)("pis1")
+            s3 = s3 + DT2(k)("PIS2")
+            s4 = s4 + DT2(k)("KERA")
+
+
+        Next
+        vv.Print("ΣΥΝΟΛΑ-----------------------")
+        vv.Print("Μετρ: " + s1.ToString + "Πιστ1: " + s2.ToString + "Πιστ2: " + s3.ToString + "Κερασμ: " + s4.ToString)
+        vv.Print("=====================")
+
+
+
+
+        vv.Print(".")
+        vv.Print(".")
+        vv.Print("")
+        vv.Print("")
+        vv.Print("")
+
+        vv.Print(".")
+        vv.Print("")
+        vv.Print("")
+        vv.Print("")
+        vv.Print("")
+
+        vv.EndDoc()
+
+        ' Exit Sub
+
+
+    End Sub
+
+
+
+
+
+
+
+    Private Sub Button3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        BARDIAOLDPRINT.MdiParent = MDIParent1
+
+        BARDIAOLDPRINT.Show()
+    End Sub
+
+    Private Sub MHNYMA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MHNYMA.Click
 
     End Sub
 End Class

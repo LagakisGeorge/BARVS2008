@@ -1,6 +1,6 @@
 ﻿Public Class arxeia
     Dim fid As Long
-    Dim F_EPANALAMBANOMENES As Integer = 0
+    Dim F_EPANALAMBANOMENES As Integer = -1
     Dim oxiPat As System.Drawing.Color = Color.LightGray
     Dim Pat As System.Drawing.Color = Color.Yellow
     Private listView1 As New ListView()
@@ -110,6 +110,8 @@
             If p_Table = "KATHG" Then
                 ExecuteSQLQuery("UPDATE KATHG SET ONO='" + ono.Text + "' WHERE ID=" + KOD.Text, dtt)
                 ExecuteSQLQuery("UPDATE KATHG SET PICTURE='" + tPicture.Text + "' WHERE ID=" + KOD.Text, dtt)
+                ExecuteSQLQuery("UPDATE KATHG SET CH1='" + timh.Text + "' WHERE ID=" + KOD.Text, dtt)
+                ExecuteSQLQuery("UPDATE KATHG SET CH2='" + ckathg.Text + "' WHERE ID=" + KOD.Text, dtt)
             End If
             If p_Table = "EIDH" Then
                 Dim MKATHG As String
@@ -198,17 +200,15 @@
         If p_Table = "EIDH" Then
             If categ > 0 Then
                 LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " where KATHG=" + Str(categ) + "  order by ONO", lv, 4)
-
             Else
                 LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%' order by ONO", lv, 4)
-
             End If
             'LOAD_file("SELECT ONO,ID,TIMH,NUM2,CH1 FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%' order by ONO", lv, 4)
+        ElseIf p_Table = "KATHG" Then
+            LOAD_file("SELECT ONO,ID,CH1,CH2 FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%'", lv, 2)
         ElseIf p_Table = "ERGAZ" Then
-
-            LOAD_file("SELECT EPO,ID FROM " + p_Table + " where EPO LIKE '%" + TextBox1.Text + "%'", lv, 2)
+            LOAD_file("SELECT EPO,ID,TIMH,CKATHG FROM " + p_Table + " where EPO LIKE '%" + TextBox1.Text + "%'", lv, 2)
         Else
-
             LOAD_file("SELECT ONO,ID FROM " + p_Table + " where ONO LIKE '%" + TextBox1.Text + "%' ", lv, 2)
         End If
     End Sub
@@ -346,6 +346,9 @@
             If DTT.Rows.Count > 0 Then
                 ONO.Text = DTT(0)("ono").ToString
                 KOD.Text = fid
+                timh.Text = DTT(0)("CH1").ToString
+                ckathg.Text = DTT(0)("CH2").ToString
+
 
                 If IsDBNull(DTT(0)("PICTURE")) Then
                     tPicture.Text = ""
@@ -394,7 +397,7 @@
         If p_Table = "EIDH" Then
             fid = lv.SelectedItems(0).SubItems(1).Text()
             table = "EIDH"
-            ExecuteSQLQuery("select * from " + p_Table + " WHERE ID=" + Str(fid), DTT)
+            ExecuteSQLQuery("select ONO,ISNULL(TIMH,0) AS TIMH,ISNULL(NUM2,0) AS NUM2,ISNULL(KATHG,0) AS KATHG,ISNULL(CH1,'') AS CH1,ISNULL(CH2,'') AS CH2,ISNULL(PICTURE,'') AS PICTURE from " + p_Table + " WHERE ID=" + Str(fid), DTT)
 
 
             If DTT.Rows.Count > 0 Then
@@ -522,12 +525,7 @@
 
         If p_Table = "EIDH" Then
             ' LOAD_file("SELECT ONO,ID,TIMH,CH1 FROM " + p_Table, lv, 2)
-            Dim ANS As Integer = MsgBox("επαναλαμβανόμενα είδη;", MsgBoxStyle.YesNo)
-            If ANS = MsgBoxResult.Yes Then
-                F_EPANALAMBANOMENES = 1
-            Else
-                F_EPANALAMBANOMENES = 0
-            End If
+           
             CreateMyListView()
             timh.Visible = True
             num2.Visible = True
@@ -549,6 +547,17 @@
             If p_Table = "KATHG" Then
                 tPicture.Visible = True
                 lPicture.Visible = True
+
+                timh.Visible = True
+
+                ltimh.Visible = True
+                ltimh.Text = "ΣΕΙΡΑ ΕΜΦΑΝΙΣΗΣ"
+
+                Label3.Visible = True
+
+                Label3.Text = "ΕΚΤΥΠΩΤΗΣ 1-3"
+                ckathg.Visible = True
+
             End If
 
             'LOAD_file("SELECT ONO,ID FROM " + p_Table, lv, 2)
@@ -736,6 +745,15 @@
 
 
         If p_Table = "EIDH" Then
+            If F_EPANALAMBANOMENES = -1 Then
+                Dim ANS As Integer = MsgBox("επαναλαμβανόμενα είδη;", MsgBoxStyle.YesNo)
+                If ANS = MsgBoxResult.Yes Then
+                    F_EPANALAMBANOMENES = 1
+                Else
+                    F_EPANALAMBANOMENES = 0
+                End If
+            End If
+
             If F_EPANALAMBANOMENES = 0 Then
 
                 KOD.Text = "0"

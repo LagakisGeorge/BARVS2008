@@ -47,6 +47,7 @@ Partial Class paragkentr
         Me.arxeio = New System.Windows.Forms.Button
         Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
         Me.bardia = New System.Windows.Forms.Button
+        Me.Button3 = New System.Windows.Forms.Button
         Me.MHNYMA = New System.Windows.Forms.Label
         Me.PictureBox1 = New System.Windows.Forms.PictureBox
         Me.GroupBox1.SuspendLayout()
@@ -301,7 +302,7 @@ Partial Class paragkentr
         Me.bNeaParaggelia.Dock = System.Windows.Forms.DockStyle.Fill
         Me.bNeaParaggelia.Location = New System.Drawing.Point(3, 3)
         Me.bNeaParaggelia.Name = "bNeaParaggelia"
-        Me.bNeaParaggelia.Size = New System.Drawing.Size(419, 43)
+        Me.bNeaParaggelia.Size = New System.Drawing.Size(419, 48)
         Me.bNeaParaggelia.TabIndex = 3
         Me.bNeaParaggelia.Text = "NEA ΠΑΡΑΓΓΕΛΙΑ"
         Me.bNeaParaggelia.UseVisualStyleBackColor = True
@@ -309,11 +310,11 @@ Partial Class paragkentr
         'arxeio
         '
         Me.arxeio.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.arxeio.Location = New System.Drawing.Point(3, 101)
+        Me.arxeio.Location = New System.Drawing.Point(3, 111)
         Me.arxeio.Name = "arxeio"
-        Me.arxeio.Size = New System.Drawing.Size(419, 44)
+        Me.arxeio.Size = New System.Drawing.Size(419, 48)
         Me.arxeio.TabIndex = 5
-        Me.arxeio.Text = "ΑΡΧΕΙΑ"
+        Me.arxeio.Text = "Αρχεία Ειδών,Κατηγοριών,Πρόσθετων,Τραπεζιών"
         Me.arxeio.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel2
@@ -323,25 +324,36 @@ Partial Class paragkentr
         Me.TableLayoutPanel2.Controls.Add(Me.bNeaParaggelia, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.bardia, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.arxeio, 0, 2)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(5, 315)
+        Me.TableLayoutPanel2.Controls.Add(Me.Button3, 0, 3)
+        Me.TableLayoutPanel2.Location = New System.Drawing.Point(5, 246)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 3
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(425, 148)
+        Me.TableLayoutPanel2.RowCount = 4
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
+        Me.TableLayoutPanel2.Size = New System.Drawing.Size(425, 217)
         Me.TableLayoutPanel2.TabIndex = 6
         '
         'bardia
         '
         Me.bardia.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.bardia.Location = New System.Drawing.Point(3, 52)
+        Me.bardia.Location = New System.Drawing.Point(3, 57)
         Me.bardia.Name = "bardia"
-        Me.bardia.Size = New System.Drawing.Size(419, 43)
+        Me.bardia.Size = New System.Drawing.Size(419, 48)
         Me.bardia.TabIndex = 6
         Me.bardia.Text = "ΒΑΡΔΙΑ"
         Me.bardia.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.Button3.Location = New System.Drawing.Point(3, 165)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(419, 49)
+        Me.Button3.TabIndex = 7
+        Me.Button3.Text = "Τυπώνω παλιότερη βάρδια"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'MHNYMA
         '
@@ -355,7 +367,7 @@ Partial Class paragkentr
         Me.PictureBox1.InitialImage = CType(resources.GetObject("PictureBox1.InitialImage"), System.Drawing.Image)
         Me.PictureBox1.Location = New System.Drawing.Point(5, 35)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(427, 274)
+        Me.PictureBox1.Size = New System.Drawing.Size(427, 205)
         Me.PictureBox1.TabIndex = 8
         Me.PictureBox1.TabStop = False
         '
@@ -374,6 +386,7 @@ Partial Class paragkentr
         Me.Name = "paragkentr"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "New"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
@@ -408,4 +421,5 @@ Partial Class paragkentr
     Friend WithEvents MHNYMA As System.Windows.Forms.Label
     Friend WithEvents PictureBox1 As System.Windows.Forms.PictureBox
     Friend WithEvents OTONH As System.Windows.Forms.Label
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

@@ -370,6 +370,7 @@ Partial Class ADDITPARAGG
         Me.Button5.TabIndex = 2
         Me.Button5.Text = "Button5"
         Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.Visible = False
         '
         'Button6
         '
@@ -390,6 +391,7 @@ Partial Class ADDITPARAGG
         Me.Button7.TabIndex = 4
         Me.Button7.Text = "Button7"
         Me.Button7.UseVisualStyleBackColor = True
+        Me.Button7.Visible = False
         '
         'Button8
         '
@@ -410,6 +412,7 @@ Partial Class ADDITPARAGG
         Me.Button9.TabIndex = 6
         Me.Button9.Text = "Button9"
         Me.Button9.UseVisualStyleBackColor = True
+        Me.Button9.Visible = False
         '
         'Button10
         '
@@ -430,6 +433,7 @@ Partial Class ADDITPARAGG
         Me.Button11.TabIndex = 8
         Me.Button11.Text = "Button11"
         Me.Button11.UseVisualStyleBackColor = True
+        Me.Button11.Visible = False
         '
         'Button12
         '
@@ -586,7 +590,7 @@ Partial Class ADDITPARAGG
         Me.CSXOLIA.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.CSXOLIA.Location = New System.Drawing.Point(462, 0)
         Me.CSXOLIA.Name = "CSXOLIA"
-        Me.CSXOLIA.Size = New System.Drawing.Size(200, 29)
+        Me.CSXOLIA.Size = New System.Drawing.Size(290, 29)
         Me.CSXOLIA.TabIndex = 52
         '
         'OK_PROSU
@@ -635,7 +639,7 @@ Partial Class ADDITPARAGG
         '
         Me.trexon_eidos.AutoSize = True
         Me.trexon_eidos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.trexon_eidos.Location = New System.Drawing.Point(668, 0)
+        Me.trexon_eidos.Location = New System.Drawing.Point(758, 0)
         Me.trexon_eidos.Name = "trexon_eidos"
         Me.trexon_eidos.Size = New System.Drawing.Size(17, 20)
         Me.trexon_eidos.TabIndex = 55

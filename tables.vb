@@ -65,13 +65,13 @@
 
 
 
-            ADDITPARAGG.ShowDialog()
+            ADDITPARAGG.Show()
 
         Else
             ADDITPARAGG.p_Trapezi = ckathg.Text
             ADDITPARAGG.b_trapezi.Text = "Tραπ." + ckathg.Text
             ADDITPARAGG.p_IDPARAGG = IDPARAGG(index)
-            ADDITPARAGG.ShowDialog()
+            ADDITPARAGG.Show()
             Dialog1.p_IDPARAGG = IDPARAGG(index)
             ' Me.Close()
             ' Me.Hide()
