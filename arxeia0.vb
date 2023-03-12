@@ -97,24 +97,7 @@
 
     End Sub
 
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        'conn = New SqlConnection(cnString)
-        ''Try
-        '' Open connection
-        'conn.Open()
-
-        'da = New SqlDataAdapter(SQLqry, conn)
-
-        ''create command builder
-        'Dim cb As SqlCommandBuilder = New SqlCommandBuilder(da)
-        'ds.Clear()
-        ''fill dataset
-        'da.Fill(ds, "PEL")
-        'GridView1.ClearSelection()
-        'GridView1.DataSource = ds
-        'GridView1.DataMember = "PEL"
-    End Sub
-
+    
 
     Private Sub trapezia_servitoros_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles trapezia_servitoros.Click
         Dim F As New TRAPEZIAANASERVITORO

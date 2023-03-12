@@ -423,7 +423,7 @@
                 If IsDBNull(DTT(0)("KATHG")) Then
 
                 Else
-                    CKATHG.Text = DTT(0)("CH1")
+                    ckathg.Text = DTT(0)("kathg")
                 End If
 
 

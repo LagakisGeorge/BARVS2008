@@ -517,9 +517,18 @@ err:
 
 
     Private Sub Button3_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
-        BARDIAOLDPRINT.MdiParent = MDIParent1
 
-        BARDIAOLDPRINT.Show()
+
+
+
+        Dim CCC As String = InputBox("ΔΩΣΕ KΩΔΙΚΟ ΔΙΕΥΘΥΝΤΗ ")
+        If CCC = "3921" Then
+
+            BARDIAOLDPRINT.MdiParent = MDIParent1
+
+            BARDIAOLDPRINT.Show()
+        End If
+
     End Sub
 
     Private Sub MHNYMA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MHNYMA.Click
