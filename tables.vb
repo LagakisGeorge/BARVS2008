@@ -65,13 +65,13 @@
 
 
 
-            ADDITPARAGG.Show()
+            ADDITPARAGG.ShowDialog()
 
         Else
             ADDITPARAGG.p_Trapezi = ckathg.Text
             ADDITPARAGG.b_trapezi.Text = "Tραπ." + ckathg.Text
             ADDITPARAGG.p_IDPARAGG = IDPARAGG(index)
-            ADDITPARAGG.Show()
+            ADDITPARAGG.ShowDialog()
             Dialog1.p_IDPARAGG = IDPARAGG(index)
             ' Me.Close()
             ' Me.Hide()
@@ -85,7 +85,7 @@
 
 
 
-    Sub CreateMyListView()
+    Public Sub CreateMyListView()
         listview1.Bounds = New Rectangle(New Point(22, 12), New Size(781, 531))
         listview1.Bounds = ListView2.Bounds
 
@@ -181,5 +181,9 @@
 
     Private Sub exodos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles exodos.Click
         Me.Close()
+    End Sub
+
+    Private Sub tables_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
+
     End Sub
 End Class

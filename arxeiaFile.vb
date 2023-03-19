@@ -60,7 +60,16 @@
                 ExecuteSQLQuery("insert into KATHG (ONO,PICTURE) VALUES ( '" + ono.Text + "','" + tPicture.Text + "')", dtt)
             End If
             If p_Table = "EIDH" Then
-                Dim MKATHG As String = Split(CKATHG.Text, ";")(1)
+                Dim MKATHG As String
+                If InStr(ckathg.Text, ";") = 0 Then
+                    MKATHG = ckathg.Text
+                Else
+                    MKATHG = Split(ckathg.Text, ";")(1)
+                End If
+
+
+
+
                 Dim mt As String = Replace(timh.Text, ",", ".")
                 Dim mt2 As String = Replace(num2.Text, ",", ".")
 
@@ -86,21 +95,21 @@
 
 
 
-                ExecuteSQLQuery("insert into EIDH (ONO,TIMH,NUM2,KATHG,CH1,CH2,PICTURE) VALUES ('" + ono.Text + "'," + mt + "," + mt2 + "," + MKATHG + ",'" + ckathg.Text + "','" + S + "','" + tPicture.Text + "')", dtt)
+                ExecuteSQLQuery("insert into EIDH (NUM1,ONO,TIMH,NUM2,KATHG,CH1,CH2,PICTURE) VALUES (" + ektypoths.Text + ",'" + ono.Text + "'," + mt + "," + mt2 + "," + MKATHG + ",'" + ckathg.Text + "','" + S + "','" + tPicture.Text + "')", dtt)
                 Me.Text = "Αποθηκεύτηκε " + ono.Text
 
             End If
             If p_Table = "XAR1" Then
-                ExecuteSQLQuery("insert into XAR1 (ONO) VALUES ('" + ONO.Text + "')", dtt)
+                ExecuteSQLQuery("insert into XAR1 (ONO) VALUES ('" + ono.Text + "')", dtt)
             End If
 
             If p_Table = "ERGAZ" Then
-                ExecuteSQLQuery("insert into ERGAZ (EPO) VALUES ('" + ONO.Text + "')", dtt)
+                ExecuteSQLQuery("insert into ERGAZ (EPO) VALUES ('" + ono.Text + "')", dtt)
             End If
 
 
             If p_Table = "TABLES" Then
-                ExecuteSQLQuery("insert into TABLES (ONO) VALUES ('" + ONO.Text + "')", dtt)
+                ExecuteSQLQuery("insert into TABLES (ONO) VALUES ('" + ono.Text + "')", dtt)
             End If
 
             nea.Enabled = True
@@ -116,10 +125,10 @@
             If p_Table = "EIDH" Then
                 Dim MKATHG As String
 
-                If InStr(CKATHG.Text, ";") = 0 Then
-                    MKATHG = "0"
+                If InStr(ckathg.Text, ";") = 0 Then
+                    MKATHG = ckathg.Text
                 Else
-                    MKATHG = Split(CKATHG.Text, ";")(1)
+                    MKATHG = Split(ckathg.Text, ";")(1)
                 End If
 
                 ExecuteSQLQuery("UPDATE EIDH SET CH1='" + ckathg.Text + "',ONO='" + ono.Text + "', TIMH=" + Replace(timh.Text, ",", ".") + ",KATHG=" + MKATHG + ",NUM2=" + Replace(num2.Text, ",", ".") + "  WHERE ID=" + KOD.Text, dtt)
@@ -136,17 +145,18 @@
                 'ΕΝΗΜΕΡΩΝΩ ΤΑ ΠΡΟΟΣΘΕΤΑ
                 ExecuteSQLQuery("UPDATE EIDH SET CH2='" + S + "'  WHERE ID=" + KOD.Text, dtt)
 
-
+                'ΕΝΗΜΕΡΩΝΩ EKTYPVTH
+                ExecuteSQLQuery("UPDATE EIDH SET NUM1=" + ektypoths.Text + "  WHERE ID=" + KOD.Text, dtt)
 
 
             End If
             If p_Table = "XAR1" Then
-                ExecuteSQLQuery("UPDATE XAR1 SET ONO='" + ONO.Text + "' WHERE ID=" + KOD.Text, dtt)
+                ExecuteSQLQuery("UPDATE XAR1 SET ONO='" + ono.Text + "' WHERE ID=" + KOD.Text, dtt)
             End If
 
 
             If p_Table = "ERGAZ" Then
-                ExecuteSQLQuery("UPDATE ERGAZ SET EPO='" + ONO.Text + "' WHERE ID=" + KOD.Text, dtt)
+                ExecuteSQLQuery("UPDATE ERGAZ SET EPO='" + ono.Text + "' WHERE ID=" + KOD.Text, dtt)
             End If
 
 
@@ -191,7 +201,7 @@
 
 
 
-            ' LOAD_file("SELECT ONO,ID FROM " + p_Table, lv, 2)
+        ' LOAD_file("SELECT ONO,ID FROM " + p_Table, lv, 2)
         LIST_SHOW(0)
 
     End Sub
@@ -397,7 +407,7 @@
         If p_Table = "EIDH" Then
             fid = lv.SelectedItems(0).SubItems(1).Text()
             table = "EIDH"
-            ExecuteSQLQuery("select ONO,ISNULL(TIMH,0) AS TIMH,ISNULL(NUM2,0) AS NUM2,ISNULL(KATHG,0) AS KATHG,ISNULL(CH1,'') AS CH1,ISNULL(CH2,'') AS CH2,ISNULL(PICTURE,'') AS PICTURE from " + p_Table + " WHERE ID=" + Str(fid), DTT)
+            ExecuteSQLQuery("select ISNULL(NUM1,0) AS NUM1,ONO,ISNULL(TIMH,0) AS TIMH,ISNULL(NUM2,0) AS NUM2,ISNULL(KATHG,0) AS KATHG,ISNULL(CH1,'') AS CH1,ISNULL(CH2,'') AS CH2,ISNULL(PICTURE,'') AS PICTURE from " + p_Table + " WHERE ID=" + Str(fid), DTT)
 
 
             If DTT.Rows.Count > 0 Then
@@ -416,7 +426,11 @@
                     num2.Text = DTT(0)("NUM2")
                 End If
 
+                If IsDBNull(DTT(0)("NUM1")) Then
 
+                Else
+                    ektypoths.Text = DTT(0)("NUM1")
+                End If
 
 
 
@@ -630,7 +644,7 @@
 
 
     Sub CreateMyListView()
-        listView1.Bounds = New Rectangle(New Point(10, 480), New Size(380, 400))
+        listView1.Bounds = New Rectangle(New Point(10, 580), New Size(380, 400))
         listView1.Items.Clear()
 
         'CreateMyListView()
@@ -871,5 +885,63 @@
 
         ' ExecuteSQLQuery("select * from " + p_Table + " WHERE ID=" + Str(fid), dtt)
         LIST_SHOW(0)
+    End Sub
+
+    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button3.Click
+        Dim dt As New DataTable
+        ExecuteSQLQuery("select ONO FROM EIDH WHERE ISNULL(KATHG,0)=0", dt)
+        Dim C As String = ""
+        If dt.Rows.Count > 0 Then
+            For K As Integer = 0 To dt.Rows.Count - 1
+                If K > 5 Then
+                    Exit For
+                End If
+                C = C + dt(K)(0) + Chr(13)
+
+
+            Next
+            MsgBox("Τα παρακάτω είδη δεν έχουν κατηγορία" + Chr(13) + C)
+
+
+        End If
+
+        ExecuteSQLQuery("select ONO FROM EIDH WHERE ISNULL(TIMH,0)=0", dt)
+        C = ""
+        If dt.Rows.Count > 0 Then
+            For K As Integer = 0 To dt.Rows.Count - 1
+                If K > 5 Then
+                    Exit For
+                End If
+                C = C + dt(K)(0) + Chr(13)
+
+
+            Next
+            MsgBox("Τα παρακάτω είδη δεν έχουν τιμή" + Chr(13) + C)
+
+
+        End If
+
+
+
+        ExecuteSQLQuery("select ONO FROM EIDH WHERE ISNULL(NUM1,0)=0", dt)
+        C = ""
+        If dt.Rows.Count > 0 Then
+            For K As Integer = 0 To dt.Rows.Count - 1
+                If K > 5 Then
+                    Exit For
+                End If
+                C = C + dt(K)(0) + Chr(13)
+
+
+            Next
+            MsgBox("Τα παρακάτω είδη δεν έχουν ΕΚΤΥΠΩΤΗ" + Chr(13) + C)
+
+
+        End If
+
+
+
+
+
     End Sub
 End Class

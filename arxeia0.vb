@@ -69,8 +69,7 @@
         A = MsgBox("ΝΑ ΔΙΑΓΡΑΦΟΥΝ ΟΛΕΣ ΟΙ ΠΑΡΑΓΓΕΛΙΕΣ ΤΟΥ ΑΡΧΕΙΟΥ", MsgBoxStyle.YesNo)
         If A = vbYes Then
             Dim CCC As String = InputBox("ΔΩΣΕ KΩΔΙΚΟ ΔΙΕΥΘΥΝΤΗ ")
-
-            If CCC = "3921" Then
+            If CCC = G_ADMIN_PW Then
                 ExecuteSQLQuery("DELETE FROM PARAGG", DT)
                 ExecuteSQLQuery("DELETE FROM PARAGGMASTER", DT)
                 ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=0,IDPARAGG=0", DT)

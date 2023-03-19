@@ -10,6 +10,12 @@ Public Class paragkentr
         Me.Dispose()
     End Sub
 
+    Private Sub paragkentr_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Click
+        Dim cc As String
+        cc = Dialog2.ShowDialog()
+
+    End Sub
+
 
 
     Private Sub Form3_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed
@@ -52,6 +58,13 @@ Public Class paragkentr
 
 
         CHECK_BARDIA()
+
+        Dim dt As New DataTable
+        ExecuteSQLQuery("select * from LOGGING WHERE ID=1", dt)
+        G_ADMIN_PW = dt(0)(0).ToString
+
+
+
 
 
         Exit Sub
@@ -104,78 +117,78 @@ err:
         Dim proc As New System.Diagnostics.Process()
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B7.Click
+    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("7")
     End Sub
 
-    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B6.Click
+    Private Sub Button8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("6")
     End Sub
 
     Sub TYPOSE(ByVal D As String)
 
-        Dim F As String
-        F = OTONH.Text
+        'Dim F As String
+        'F = OTONH.Text
 
 
 
 
 
-        If D = "<" Then
-            If Len(F) > 1 Then
-                F = Mid(F, 1, Len(F) - 1)
-            Else
-                F = ""
-            End If
+        'If D = "<" Then
+        '    If Len(F) > 1 Then
+        '        F = Mid(F, 1, Len(F) - 1)
+        '    Else
+        '        F = ""
+        '    End If
 
-        Else
+        'Else
 
-            If D = "." Then
-                If InStr(F, ".") > 0 Then D = ""
-            End If
+        '    If D = "." Then
+        '        If InStr(F, ".") > 0 Then D = ""
+        '    End If
 
-            F = F + D
-
-
-        End If
+        '    F = F + D
 
 
-        OTONH.Text = F
+        'End If
+
+
+        'OTONH.Text = F
 
     End Sub
 
 
 
 
-    Private Sub B9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B9.Click
+    Private Sub B9_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("9")
     End Sub
 
-    Private Sub B4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B4.Click
+    Private Sub B4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("4")
     End Sub
 
-    Private Sub B5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B5.Click
+    Private Sub B5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("5")
     End Sub
 
-    Private Sub B8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B8.Click
+    Private Sub B8_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("8")
     End Sub
 
-    Private Sub B1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B1.Click
+    Private Sub B1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("1")
     End Sub
 
-    Private Sub B2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B2.Click
+    Private Sub B2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("2")
     End Sub
 
-    Private Sub B3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B3.Click
+    Private Sub B3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("3")
     End Sub
 
-    Private Sub B0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles B0.Click
+    Private Sub B0_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("0")
     End Sub
 
@@ -185,11 +198,11 @@ err:
     End Sub
 
 
-    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+    Private Sub Button1_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE("<")
     End Sub
 
-    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
+    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs)
         TYPOSE(".")
     End Sub
 
@@ -202,7 +215,7 @@ err:
 
     End Sub
 
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
+    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
@@ -271,10 +284,15 @@ err:
         '        MHNYMA.BackColor = Color.Red
         '    End If
         'End If
-        If gBardia = 0 Then
-            BARDIES.MdiParent = MDIParent1
-            BARDIES.Show()
+        Dim isnea As Integer
+        isnea = 0
 
+        If gBardia = 0 Then
+            'BARDIES.MdiParent = MDIParent1
+            BARDIES.ShowDialog()
+
+
+            isnea = 1
 
 
         Else
@@ -283,7 +301,7 @@ err:
             Dim MM As String = ""
             Dim CASH(5) As String
             Dim CASHTOT As Single = 0
-            MsgBox("Μετρ: " + DT(0)("CASH").ToString + "Πιστ1: " + DT(0)("pis1").ToString + "Πιστ2: " + DT(0)("PIS2").ToString + "Κερασμ: " + DT(0)("KERA").ToString)
+            MsgBox("Μετρ: " + DT(0)("CASH").ToString + Chr(13) + "Πιστ: " + DT(0)("pis1").ToString + Chr(13) + "Εκπτ: " + DT(0)("PIS2").ToString + Chr(13) + "Κερασμ: " + DT(0)("KERA").ToString)
 
             'For K As Integer = 0 To DT.Rows.Count - 1
             '    If IsDBNull(DT(K)(0)) Or IsDBNull(DT(K)(1)) Then
@@ -444,7 +462,9 @@ err:
 
         End If
         CHECK_BARDIA()
-
+        If isnea = 1 Then
+            End
+        End If
 
     End Sub
 
@@ -455,7 +475,7 @@ err:
 
 
 
-        ExecuteSQLQuery("select TRAPEZI,AJIA,ISNULL(CASH,0) AS CASH,ISNULL(PIS1,0) AS PIS1,ISNULL(PIS2,0) AS PIS2,ISNULL(KERA,0) AS KERA,TROPOS,CH1,CH2 FROM PARAGGMASTER WHERE IDBARDIA=" + Str(Bardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
+        ExecuteSQLQuery("select TRAPEZI,AJIA,ISNULL(CASH,0) AS CASH,ISNULL(PIS1,0) AS PIS1,ISNULL(PIS2,0) AS PIS2,ISNULL(KERA,0) AS KERA,TROPOS,CH1,CH2,HME FROM PARAGGMASTER WHERE IDBARDIA=" + Str(Bardia) + " ORDER BY TROPOS,TRAPEZI,CH1", DT2)
 
         vv.FontSize = 10
         vv.FontBold = True
@@ -472,20 +492,25 @@ err:
         Dim s1, s2, s3, s4 As Single
         s1 = 0 : s2 = 0 : s3 = 0 : s4 = 0
         Dim k As Integer
+
+        '22 ENALLAKTIKH  vv.Print("Μετρ: " + DT2(k)("CASH").ToString + "Πιστ1: " + DT2(k)("pis1").ToString + "Εκπτ: " + DT2(k)("PIS2").ToString + "Κερασμ: " + DT2(k)("KERA").ToString)
         For k = 0 To DT2.Rows.Count - 1
 
 
-            vv.Print(DT2(k)("TRAPEZI").ToString + " / " + Format(If(IsDBNull(DT2(k)("AJIA")), 0, DT2(k)("AJIA")), "###0.00") + " / " + DT2(k)("TROPOS").ToString + " /  " + DT2(k)("CH1").ToString + " /  " + DT2(k)("CH2").ToString)
-            vv.Print("Μετρ: " + DT2(k)("CASH").ToString + "Πιστ1: " + DT2(k)("pis1").ToString + "Πιστ2: " + DT2(k)("PIS2").ToString + "Κερασμ: " + DT2(k)("KERA").ToString)
+            '22  vv.Print(DT2(k)("TRAPEZI").ToString + " " + Format(DT2(0)("HME"), "hh:mm") + " " + DT2(k)("CASH").ToString + " " + DT2(k)("pis1").ToString + " " + DT2(k)("PIS2").ToString + " " + DT2(k)("KERA").ToString)
+
+
+            vv.Print(DT2(k)("TRAPEZI").ToString + " / " + Format(DT2(k)("CASH") + DT2(k)("PIS1") + DT2(k)("PIS2") + DT2(k)("KERA"), "###0.00") + " /  " + DT2(k)("CH1").ToString + " /  " + DT2(k)("CH2").ToString)
+            vv.Print("Μετ: " + DT2(k)("CASH").ToString + " Πισ: " + DT2(k)("pis1").ToString + " Εκπ: " + DT2(k)("PIS2").ToString + " Κερ: " + DT2(k)("KERA").ToString)
             s1 = s1 + DT2(k)("CASH")
             s2 = s2 + DT2(k)("pis1")
             s3 = s3 + DT2(k)("PIS2")
             s4 = s4 + DT2(k)("KERA")
-
+            vv.Print("")
 
         Next
         vv.Print("ΣΥΝΟΛΑ-----------------------")
-        vv.Print("Μετρ: " + s1.ToString + "Πιστ1: " + s2.ToString + "Πιστ2: " + s3.ToString + "Κερασμ: " + s4.ToString)
+        vv.Print("Μετρ: " + s1.ToString + " Πιστ: " + s2.ToString + " Εκπτ: " + s3.ToString + " Κερ: " + s4.ToString)
         vv.Print("=====================")
 
 
@@ -522,7 +547,8 @@ err:
 
 
         Dim CCC As String = InputBox("ΔΩΣΕ KΩΔΙΚΟ ΔΙΕΥΘΥΝΤΗ ")
-        If CCC = "3921" Then
+        If CCC = G_ADMIN_PW Then
+
 
             BARDIAOLDPRINT.MdiParent = MDIParent1
 
@@ -532,6 +558,28 @@ err:
     End Sub
 
     Private Sub MHNYMA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MHNYMA.Click
+
+    End Sub
+
+    Private Sub Button1_Click_2(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
+        Dim CCC As String = InputBox("ΔΩΣΕ KΩΔΙΚΟ ΔΙΕΥΘΥΝΤΗ ")
+        If CCC = G_ADMIN_PW Then
+
+            Dim dt As New DataTable
+            Dim PW, pw2 As String
+            PW = InputBox("ΔΩΣΕ ΝΕΟ ΚΩΔΙΚΟ", "")
+            pw2 = InputBox("ΕΠΑΝΑΛΑΒΕΤΕ ΤΟΝ ΝΕΟ ΚΩΔΙΚΟ", "")
+
+
+            If PW = pw2 Then
+                ExecuteSQLQuery("UPDATE LOGGING SET QUERY='" + PW + "' WHERE ID=1", dt)
+                G_ADMIN_PW = PW
+                MsgBox("OK")
+            Else
+                MsgBox("Ο Κωδικός δεν άλλαξε")
+            End If
+        End If
+
 
     End Sub
 End Class

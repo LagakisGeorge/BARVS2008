@@ -29,6 +29,7 @@ Module Module1
 
     Public gUser As Integer ' τον user τον καταλαβαίνει από το tablet
     Public gIsAdmin As Integer ' einai o dieythintis
+    Public G_ADMIN_PW As String
 
     'Module Module1
     Dim WithEvents pd As PrintDocument = New PrintDocument

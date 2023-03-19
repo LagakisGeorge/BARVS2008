@@ -1382,30 +1382,55 @@ err:
         ' Dim ANS As Integer = MsgBox("gack", MsgBoxStyle.YesNoCancel) ' 6,7,2
 
 
+
+
+
+
+        'ExecuteSQLQuery("SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=" + Str(p_IDPARAGG), DT)
+        'Dim SS As String = Replace(DT(0)(0).ToString, ",", ".")
+
+        ExecuteSQLQuery("SELECT  str(round(SUM(POSO*TIMH),2),6,2 ) FROM PARAGG WHERE   IDPARAGG=" + Str(p_IDPARAGG), DT)
+
+
+        Dim SS As String = Replace(DT(0)(0).ToString, ",", ".")
+
+        Dim CX As String = InputBox("Εκπτωση", "Συνολο " + SS, "")
+        If Len(CX) = 0 Then
+            CX = "0"
+        End If
+
+        SS = Str(Val(Replace(DT(0)(0), ",", ".")) - Val(Replace(CX, ",", ".")))
+
+
         Dim F As New DialogBoxForm
         F.Button1.Text = "ΜΕΤΡΗΤΑ"
         F.Button2.Text = "ΠΙΣΤΩΤΙΚΗ 1"
-        F.Button3.Text = "ΠΙΣΤΩΤΙΚΗ 2"
+        F.Button3.Visible = False '   Text = "ΠΙΣΤΩΤΙ"
         F.Button4.Text = "ΚΕΡΑΣΜΕΝΑ"
         If F.ShowDialog() = Windows.Forms.DialogResult.OK Then
 
 
 
-            'ExecuteSQLQuery("SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=" + Str(p_IDPARAGG), DT)
-            'Dim SS As String = Replace(DT(0)(0).ToString, ",", ".")
 
-            ExecuteSQLQuery("SELECT  str(round(SUM(POSO*TIMH),2),6,2 ) FROM PARAGG WHERE NUM1 IS NULL AND  IDPARAGG=" + Str(p_IDPARAGG), DT)
-            Dim SS As String = Replace(DT(0)(0).ToString, ",", ".")
+
+
+            If Val(Replace(CX, ",", ".")) > 0 Then
+                ExecuteSQLQuery("UPDATE  PARAGGMASTER SET PIS2=isnull(PIS2,0)+" + Replace(CX, ",", ".") + " WHERE ID=" + Str(p_IDPARAGG), DT)
+
+            End If
+
+
+
             If SS = Nothing Then
                 SS = "0"
             End If
-            
+
             If F.LoginName = 1 Then
                 ExecuteSQLQuery("UPDATE  PARAGGMASTER SET CASH=isnull(CASH,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
             ElseIf F.LoginName = 2 Then
                 ExecuteSQLQuery("UPDATE  PARAGGMASTER SET PIS1=isnull(PIS1,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
-            ElseIf F.LoginName = 3 Then
-                ExecuteSQLQuery("UPDATE  PARAGGMASTER SET PIS2=isnull(PIS2,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
+                'ElseIf F.LoginName = 3 Then
+                '   ExecuteSQLQuery("UPDATE  PARAGGMASTER SET PIS2=isnull(PIS2,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
             ElseIf F.LoginName = 4 Then
                 ExecuteSQLQuery("UPDATE  PARAGGMASTER SET KERA=isnull(KERA,0)+" + SS + " WHERE ID=" + Str(p_IDPARAGG), DT)
             End If
@@ -1425,13 +1450,15 @@ err:
             ' ExecuteSQLQuery("delete from PARAGG WHERE IDPARAGG=0 ", DT)
             Me.Close()
 
+
+
         Else
 
         End If
 
 
 
-            ''
+        ''
     End Sub
 
     Public Sub ShowDialogBox()

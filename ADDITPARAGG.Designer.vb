@@ -687,6 +687,7 @@ Partial Class ADDITPARAGG
         Me.Name = "ADDITPARAGG"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "New"
+        Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)

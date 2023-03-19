@@ -35,12 +35,14 @@ Partial Class arxeia
         Me.ltimh = New System.Windows.Forms.Label
         Me.Label4 = New System.Windows.Forms.Label
         Me.timh = New FocusedTextBox.FocusedTextBox
-        Me.ckathg = New FocusedTextBox.FocusedTextBox
         Me.tPROSUETA = New FocusedTextBox.FocusedTextBox
         Me.lPicture = New System.Windows.Forms.Label
         Me.tPicture = New System.Windows.Forms.TextBox
         Me.Label5 = New System.Windows.Forms.Label
         Me.num2 = New System.Windows.Forms.TextBox
+        Me.ckathg = New FocusedTextBox.FocusedTextBox
+        Me.Label7 = New System.Windows.Forms.Label
+        Me.ektypoths = New System.Windows.Forms.TextBox
         Me.XAR1 = New System.Windows.Forms.TextBox
         Me.XAR2 = New System.Windows.Forms.TextBox
         Me.Label1 = New System.Windows.Forms.Label
@@ -58,6 +60,7 @@ Partial Class arxeia
         Me.Button2 = New System.Windows.Forms.Button
         Me.TextBox1 = New System.Windows.Forms.TextBox
         Me.Label6 = New System.Windows.Forms.Label
+        Me.Button3 = New System.Windows.Forms.Button
         Me.TableLayoutPanel1.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
@@ -139,21 +142,25 @@ Partial Class arxeia
         'TableLayoutPanel2
         '
         Me.TableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.TableLayoutPanel2.ColumnCount = 2
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.30898!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.69102!))
+        Me.TableLayoutPanel2.ColumnCount = 4
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.85215!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.05882!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10.96979!))
+        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel2.Controls.Add(Me.ono, 1, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label2, 0, 0)
         Me.TableLayoutPanel2.Controls.Add(Me.Label3, 0, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.ltimh, 0, 1)
         Me.TableLayoutPanel2.Controls.Add(Me.Label4, 0, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.timh, 1, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.ckathg, 1, 2)
         Me.TableLayoutPanel2.Controls.Add(Me.tPROSUETA, 1, 3)
         Me.TableLayoutPanel2.Controls.Add(Me.lPicture, 0, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.tPicture, 1, 4)
         Me.TableLayoutPanel2.Controls.Add(Me.Label5, 0, 5)
         Me.TableLayoutPanel2.Controls.Add(Me.num2, 1, 5)
+        Me.TableLayoutPanel2.Controls.Add(Me.ckathg, 1, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.Label7, 2, 2)
+        Me.TableLayoutPanel2.Controls.Add(Me.ektypoths, 3, 2)
         Me.TableLayoutPanel2.Location = New System.Drawing.Point(22, 214)
         Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
         Me.TableLayoutPanel2.RowCount = 6
@@ -172,11 +179,11 @@ Partial Class arxeia
         Me.ono.Enabled = False
         Me.ono.EnterFocusColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.ono.LeaveFocusColor = System.Drawing.Color.Empty
-        Me.ono.Location = New System.Drawing.Point(137, 3)
+        Me.ono.Location = New System.Drawing.Point(109, 3)
         Me.ono.Mandatory = False
         Me.ono.MandatoryColor = System.Drawing.Color.Empty
         Me.ono.Name = "ono"
-        Me.ono.Size = New System.Drawing.Size(489, 20)
+        Me.ono.Size = New System.Drawing.Size(290, 20)
         Me.ono.TabIndex = 55
         '
         'Label2
@@ -185,7 +192,7 @@ Partial Class arxeia
         Me.Label2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Label2.Location = New System.Drawing.Point(3, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(128, 30)
+        Me.Label2.Size = New System.Drawing.Size(100, 30)
         Me.Label2.TabIndex = 1
         Me.Label2.Text = "Ονομα"
         '
@@ -223,25 +230,12 @@ Partial Class arxeia
         Me.timh.Enabled = False
         Me.timh.EnterFocusColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.timh.LeaveFocusColor = System.Drawing.Color.Empty
-        Me.timh.Location = New System.Drawing.Point(137, 33)
+        Me.timh.Location = New System.Drawing.Point(109, 33)
         Me.timh.Mandatory = False
         Me.timh.MandatoryColor = System.Drawing.Color.Empty
         Me.timh.Name = "timh"
-        Me.timh.Size = New System.Drawing.Size(489, 20)
+        Me.timh.Size = New System.Drawing.Size(290, 20)
         Me.timh.TabIndex = 56
-        '
-        'ckathg
-        '
-        Me.ckathg.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ckathg.Enabled = False
-        Me.ckathg.EnterFocusColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
-        Me.ckathg.LeaveFocusColor = System.Drawing.Color.Empty
-        Me.ckathg.Location = New System.Drawing.Point(137, 63)
-        Me.ckathg.Mandatory = False
-        Me.ckathg.MandatoryColor = System.Drawing.Color.Empty
-        Me.ckathg.Name = "ckathg"
-        Me.ckathg.Size = New System.Drawing.Size(489, 20)
-        Me.ckathg.TabIndex = 57
         '
         'tPROSUETA
         '
@@ -249,11 +243,11 @@ Partial Class arxeia
         Me.tPROSUETA.Enabled = False
         Me.tPROSUETA.EnterFocusColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
         Me.tPROSUETA.LeaveFocusColor = System.Drawing.Color.Empty
-        Me.tPROSUETA.Location = New System.Drawing.Point(137, 93)
+        Me.tPROSUETA.Location = New System.Drawing.Point(109, 93)
         Me.tPROSUETA.Mandatory = False
         Me.tPROSUETA.MandatoryColor = System.Drawing.Color.Empty
         Me.tPROSUETA.Name = "tPROSUETA"
-        Me.tPROSUETA.Size = New System.Drawing.Size(489, 20)
+        Me.tPROSUETA.Size = New System.Drawing.Size(290, 20)
         Me.tPROSUETA.TabIndex = 58
         '
         'lPicture
@@ -269,9 +263,9 @@ Partial Class arxeia
         'tPicture
         '
         Me.tPicture.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.tPicture.Location = New System.Drawing.Point(137, 123)
+        Me.tPicture.Location = New System.Drawing.Point(109, 123)
         Me.tPicture.Name = "tPicture"
-        Me.tPicture.Size = New System.Drawing.Size(489, 20)
+        Me.tPicture.Size = New System.Drawing.Size(290, 20)
         Me.tPicture.TabIndex = 60
         Me.tPicture.Visible = False
         '
@@ -286,10 +280,44 @@ Partial Class arxeia
         '
         'num2
         '
-        Me.num2.Location = New System.Drawing.Point(137, 153)
+        Me.num2.Location = New System.Drawing.Point(109, 153)
         Me.num2.Name = "num2"
-        Me.num2.Size = New System.Drawing.Size(489, 20)
+        Me.num2.Size = New System.Drawing.Size(290, 20)
         Me.num2.TabIndex = 62
+        '
+        'ckathg
+        '
+        Me.ckathg.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ckathg.Enabled = False
+        Me.ckathg.EnterFocusColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(128, Byte), Integer))
+        Me.ckathg.LeaveFocusColor = System.Drawing.Color.Empty
+        Me.ckathg.Location = New System.Drawing.Point(109, 63)
+        Me.ckathg.Mandatory = False
+        Me.ckathg.MandatoryColor = System.Drawing.Color.Empty
+        Me.ckathg.Name = "ckathg"
+        Me.ckathg.Size = New System.Drawing.Size(290, 20)
+        Me.ckathg.TabIndex = 57
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(405, 60)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(62, 13)
+        Me.Label7.TabIndex = 63
+        Me.Label7.Text = "Εκτυπωτής"
+        '
+        'ektypoths
+        '
+        Me.ektypoths.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.ektypoths.Location = New System.Drawing.Point(474, 63)
+        Me.ektypoths.Name = "ektypoths"
+        Me.ektypoths.Size = New System.Drawing.Size(152, 20)
+        Me.ektypoths.TabIndex = 64
         '
         'XAR1
         '
@@ -399,11 +427,21 @@ Partial Class arxeia
         Me.Label6.TabIndex = 58
         Me.Label6.Text = "Αναζήτηση"
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(855, 31)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(173, 41)
+        Me.Button3.TabIndex = 59
+        Me.Button3.Text = "Ελεγχος Λαθών"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'arxeia
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1068, 662)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button2)
@@ -461,4 +499,7 @@ Partial Class arxeia
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents ektypoths As System.Windows.Forms.TextBox
+    Friend WithEvents Button3 As System.Windows.Forms.Button
 End Class

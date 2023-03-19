@@ -86,7 +86,7 @@ Public Class MDIParent1
     Private m_ChildFormNumber As Integer
 
     Private Sub MDIParent1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        ADDITPARAGG.MdiParent = Me
+        'ADDITPARAGG.MdiParent = Me
         ARXEIA0.MdiParent = Me
         arxeia.MdiParent = Me
         paragkentr.MdiParent = Me

@@ -55,7 +55,7 @@ Partial Class tables
         '
         'exodos
         '
-        Me.exodos.Location = New System.Drawing.Point(755, 339)
+        Me.exodos.Location = New System.Drawing.Point(755, 492)
         Me.exodos.Name = "exodos"
         Me.exodos.Size = New System.Drawing.Size(103, 66)
         Me.exodos.TabIndex = 3
@@ -66,7 +66,7 @@ Partial Class tables
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(858, 580)
+        Me.ClientSize = New System.Drawing.Size(1149, 663)
         Me.Controls.Add(Me.exodos)
         Me.Controls.Add(Me.ListView2)
         Me.Controls.Add(Me.ListBox1)
