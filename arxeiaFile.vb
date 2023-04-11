@@ -109,7 +109,7 @@
 
 
             If p_Table = "TABLES" Then
-                ExecuteSQLQuery("insert into TABLES (ONO) VALUES ('" + ono.Text + "')", dtt)
+                ExecuteSQLQuery("insert into TABLES (ONO,NUM1,KATEILHMENO) VALUES ('" + ono.Text + "',1,0)", dtt)
             End If
 
             nea.Enabled = True
@@ -161,13 +161,14 @@
 
 
             If p_Table = "TABLES" Then
-                ExecuteSQLQuery("SELECT * FROM TABLES  WHERE ID=" + KOD.Text, dtt)
+                ExecuteSQLQuery("SELECT ISNULL(KATEILHMENO,0) as KATEILHMENO FROM TABLES  WHERE ID=" + KOD.Text, dtt)
                 Dim N1 As Integer = dtt(0)("KATEILHMENO")
                 If N1 = 1 Then
                     MsgBox("Το τραπέζι είναι ανοιχτό." + Chr(13) + "Αδύνατη η μεταβολή")
 
                 Else
                     ExecuteSQLQuery("UPDATE TABLES SET ONO='" + ono.Text + "' WHERE ID=" + KOD.Text, dtt)
+                    ExecuteSQLQuery("UPDATE TABLES SET NUM2=" + timh.Text + " WHERE ID=" + KOD.Text, dtt)
                 End If
 
 
@@ -393,10 +394,11 @@
 
             fid = lv.SelectedItems(0).SubItems(1).Text()
 
-            ExecuteSQLQuery("select * from " + p_Table + " WHERE ID=" + Str(fid), DTT)
+            ExecuteSQLQuery("select ID,ONO,ISNULL(NUM2,0) AS NUM2 from " + p_Table + " WHERE ID=" + Str(fid), DTT)
             If DTT.Rows.Count > 0 Then
                 ono.Text = DTT(0)("ONO").ToString
                 KOD.Text = fid
+                timh.Text = DTT(0)("NUM2").ToString
             End If
 
 
@@ -558,7 +560,7 @@
             ltimh.Visible = False
             Label3.Visible = False
             Label4.Visible = False
-            If p_Table = "KATHG" Then
+            If p_Table = "KATHG" Or p_Table = "TABLES" Then
                 tPicture.Visible = True
                 lPicture.Visible = True
 
