@@ -21,6 +21,14 @@ Public Class ADDITPARAGG
     Private LISTVIEW1 As New ListView
     Private EIDHVIEW As New ListView
     Private A_EIDH(200, 2) As String
+
+
+
+    ' Private TABLEview1 As New ListView
+    Private KATEIL(100) As Integer
+    Private IDPARAGG(100) As Integer
+
+
     Structure EIDOS
         Dim ID As Integer
         Dim TIMH As Single
@@ -79,6 +87,104 @@ Public Class ADDITPARAGG
     End Sub
 
     Private Sub Form3_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        CreateMyListView()
+
+
+    End Sub
+    Public Sub CreateMyListView()
+        ' TABLEview1.Bounds = New Rectangle(New Point(22, 12), New Size(781, 531))
+        ' TABLEview1.Bounds = ListView2.Bounds
+
+        TABLEview1.Items.Clear()
+
+        'CreateMyListView()
+        'AddHandler TABLEview1.Click, AddressOf TABLEview1_Click
+
+
+        'TABLEview1.Bounds = New Rectangle(New Point(10, 10), New Size(420, 400))
+
+        ' Set the view to show details.
+        With TABLEview1
+            ' Set ListView view mode to show Large Icons
+            .View = View.LargeIcon
+            .Cursor = Cursors.Hand
+            .Anchor = AnchorStyles.Bottom + AnchorStyles.Left + AnchorStyles.Right + AnchorStyles.Top
+        End With
+
+        ' / --------------------------------------------------------------------------------
+        ' / BASIC THINKING ... Static ListView control
+        ' Create items and sets of subitems for each item.
+        'Dim item1 As New ListViewItem("Table 1", 0)
+        'Dim item2 As New ListViewItem("Table 2", 1)
+        'Dim item3 As New ListViewItem("Table 3", 0)
+        'Dim item4 As New ListViewItem("Table 4", 0)
+        'Dim item5 As New ListViewItem("Table 5", 1)
+        'Dim item6 As New ListViewItem("Table 6", 1)
+        'Dim item7 As New ListViewItem("Table 7", 0)
+        'Add the items to the ListView.
+        'TABLEview1.Items.AddRange(New ListViewItem() {item1, item2, item3, item4, item5, item6, item7})
+        ' / --------------------------------------------------------------------------------
+
+        TABLEview1.Columns.Add("Column 1", -2, HorizontalAlignment.Left)
+        TABLEview1.Columns.Add("Column 2", -2, HorizontalAlignment.Left)
+        ' / --------------------------------------------------------------------------------
+        ' / @Run Time
+
+
+
+        Dim DTT As New DataTable
+        ExecuteSQLQuery("select ONO, ID,isnull(KATEILHMENO,0) as KATEILHMENO ,isnull(SYNOLO,0) as SYNOLO,ISNULL(IDPARAGG,0) AS IDPARAGG ,(SELECT SUM(POSO*TIMH) FROM PARAGG WHERE IDPARAGG=TABLES.IDPARAGG) as TREX FROM TABLES WHERE NUM1=" + Str(gUser) + " ORDER BY ONO", DTT)
+
+
+        ' ExecuteSQLQuery("SELECT ONO,POSO,TIMH,POSO*TIMH AS AJ FROM PARAGG WHERE IDPARAGG=" + Str(p_IDPARAGG), DT)
+
+
+
+
+        Dim Items As New List(Of ListViewItem)
+        Dim RancomClass As New Random()
+        For i As Integer = 0 To DTT.Rows.Count - 1
+            '// Text and Images index
+            Dim N1 As Integer = DTT(i)("KATEILHMENO")
+            KATEIL(i) = N1
+            IDPARAGG(i) = DTT(i)("IDPARAGG")
+            Dim TREX_LOGAR As String
+            If nNull(DTT(i)("TREX").ToString) > 0 Then
+                TREX_LOGAR = "   >" + DTT(i)("TREX").ToString + "€"
+            Else
+                TREX_LOGAR = "" 'DTT(i)("TREX").ToString
+            End If
+            Dim item As New ListViewItem(DTT(i)("ONO").ToString + TREX_LOGAR, N1) ' RancomClass.Next(0, 10) Mod 2)
+            Items.Add(item)
+        Next
+        TABLEview1.Items.AddRange(Items.ToArray)
+
+        ' Create ImageList objects.
+        Dim imgList As New ImageList()
+        imgList.ImageSize = New Size(64, 64)
+        Dim strPath As String = MyPath(Application.StartupPath)
+
+
+        ' Initialize the ImageList objects with bitmaps.
+        imgList.Images.Add(Bitmap.FromFile(strPath & "png\table-icon-green.png"))
+        imgList.Images.Add(Bitmap.FromFile(strPath & "png\table-icon-red.png"))
+
+        'Assign the ImageList objects to the ListView.
+        TABLEview1.LargeImageList = imgList
+
+        ' Add the ListView to the control collection.
+        '  Me.Controls.Add(TABLEview1)
+        '// start event handling at any time during program execution.
+        '  AddHandler TABLEview1.Click, AddressOf TABLEview1_Click
+
+    End Sub 'CreateMyListView
+
+
+
+
+
+
+    Sub OLDLOAD()
         On Error GoTo err
         KATHG.Visible = False
         EIDH.Visible = False
@@ -153,8 +259,8 @@ Public Class ADDITPARAGG
         Exit Sub
 err:
         MsgBox(Err.Description, MsgBoxStyle.Critical, "Error")
-    End Sub
 
+    End Sub
 
 
 
@@ -985,7 +1091,7 @@ err:
 
         If ListParagg.Items.Count = 0 Then
 
-            Me.Close()
+            ' Me.Close()
             Exit Sub
 
         End If
@@ -1106,20 +1212,14 @@ err:
 
 
 
-        '   ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=1,IDPARAGG=" + Str(N) + " WHERE ONO='" + p_Trapezi + "'", DT)
+       
 
-
-
-        ' ExecuteSQLQuery("UPDATE TABLES SET KATEILHMENO=1 WHERE ONO='" + p_Trapezi + "'", DT)
-
-        Me.Close()
+        ' Me.Close()
 
 
 
 
-        'ExecuteSQLQuery(SQL, DT)
-        '  ExecuteSQLQuery("INSERT INTO PARAGG (HME) VALUES (#01/18/2018#)", DT)
-
+       
     End Sub
     Sub CREATE_NEA_PARAGGELIA()
 
@@ -1853,6 +1953,56 @@ err:
     End Sub
 
     Private Sub KATHG_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles KATHG.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub TableView1_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TableView1.SelectedIndexChanged
+
+        ' MsgBox(listView1.SelectedItems.Item(0).Text)
+
+        If TABLEview1.SelectedIndices.Count = 0 Then
+            Exit Sub
+        End If
+
+
+        Dim index As Integer = TableView1.SelectedIndices(0)
+        'If FIRSTIME = 0 Then
+        'FIRSTIME = 1 
+        CKATHG.Text = Trim(Mid(TableView1.SelectedItems.Item(0).Text, 1, 4))
+        If KATEIL(index) = 0 Then
+            'neaPARAGG.p_Trapezi = ckathg.Text
+
+            'neaPARAGG.b_trapezi.Text = "Tραπ." + ckathg.Text
+
+            'neaPARAGG.ShowDialog()
+            p_Trapezi = CKATHG.Text
+            b_trapezi.Text = "Tραπ." + CKATHG.Text
+            p_IDPARAGG = IDPARAGG(index)
+            HDH_YPARXOYSA.Visible = False
+            typono_logar.Visible = False
+            PAYMENT.Visible = False
+
+
+
+            ' ShowDialog()
+            OLDLOAD()
+
+        Else
+            p_Trapezi = CKATHG.Text
+            b_trapezi.Text = "Tραπ." + CKATHG.Text
+            p_IDPARAGG = IDPARAGG(index)
+            OLDLOAD()
+            ' ShowDialog()
+            Dialog1.p_IDPARAGG = IDPARAGG(index)
+            ' Me.Close()
+            ' Me.Hide()
+
+        End If
+        CreateMyListView()
+        ' End If
+
+
+
 
     End Sub
 End Class

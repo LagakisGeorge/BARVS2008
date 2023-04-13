@@ -43,16 +43,6 @@ Partial Class ADDITPARAGG
         Me.fpa = New System.Windows.Forms.Label
         Me.OTONH = New System.Windows.Forms.TextBox
         Me.Label2 = New System.Windows.Forms.Label
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel
-        Me.Button4 = New System.Windows.Forms.Button
-        Me.Button5 = New System.Windows.Forms.Button
-        Me.Button6 = New System.Windows.Forms.Button
-        Me.Button7 = New System.Windows.Forms.Button
-        Me.Button8 = New System.Windows.Forms.Button
-        Me.Button9 = New System.Windows.Forms.Button
-        Me.Button10 = New System.Windows.Forms.Button
-        Me.Button11 = New System.Windows.Forms.Button
-        Me.Button12 = New System.Windows.Forms.Button
         Me.EIDH = New System.Windows.Forms.ListView
         Me.ListParagg = New System.Windows.Forms.ListView
         Me.ColumnHeader1 = New System.Windows.Forms.ColumnHeader
@@ -70,7 +60,6 @@ Partial Class ADDITPARAGG
         Me.ColumnHeader10 = New System.Windows.Forms.ColumnHeader
         Me.ColumnHeader11 = New System.Windows.Forms.ColumnHeader
         Me.TextBox1 = New System.Windows.Forms.TextBox
-        Me.TextBox2 = New System.Windows.Forms.TextBox
         Me.PAYMENT = New System.Windows.Forms.Button
         Me.typono_logar = New System.Windows.Forms.Button
         Me.CSXOLIA = New System.Windows.Forms.TextBox
@@ -83,24 +72,24 @@ Partial Class ADDITPARAGG
         Me.bale1 = New System.Windows.Forms.Button
         Me.trexon_eidos = New System.Windows.Forms.Label
         Me.b_trapezi = New System.Windows.Forms.Button
+        Me.TableView1 = New System.Windows.Forms.ListView
         Me.GroupBox1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
-        Me.TableLayoutPanel2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.TableLayoutPanel1)
         Me.GroupBox1.Controls.Add(Me.KauTimh)
         Me.GroupBox1.Controls.Add(Me.SYSKEYASIA)
         Me.GroupBox1.Controls.Add(Me.efk)
         Me.GroupBox1.Controls.Add(Me.fpa)
-        Me.GroupBox1.Location = New System.Drawing.Point(2, 739)
+        Me.GroupBox1.Location = New System.Drawing.Point(982, 639)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(307, 196)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Είδος"
+        Me.GroupBox1.Visible = False
         '
         'TableLayoutPanel1
         '
@@ -120,7 +109,7 @@ Partial Class ADDITPARAGG
         Me.TableLayoutPanel1.Controls.Add(Me.B2, 1, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.B3, 2, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.B0, 0, 3)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(8, 12)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(1004, 662)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 4
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
@@ -129,6 +118,7 @@ Partial Class ADDITPARAGG
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(294, 183)
         Me.TableLayoutPanel1.TabIndex = 45
+        Me.TableLayoutPanel1.Visible = False
         '
         'B7
         '
@@ -312,153 +302,36 @@ Partial Class ADDITPARAGG
         '
         Me.OTONH.Enabled = False
         Me.OTONH.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.OTONH.Location = New System.Drawing.Point(853, 711)
+        Me.OTONH.Location = New System.Drawing.Point(980, 705)
         Me.OTONH.Name = "OTONH"
         Me.OTONH.Size = New System.Drawing.Size(88, 26)
         Me.OTONH.TabIndex = 0
+        Me.OTONH.Visible = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(800, 724)
+        Me.Label2.Location = New System.Drawing.Point(990, 743)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(47, 13)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Κωδικός"
-        '
-        'TableLayoutPanel2
-        '
-        Me.TableLayoutPanel2.ColumnCount = 5
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
-        Me.TableLayoutPanel2.Controls.Add(Me.Button4, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button5, 1, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button6, 1, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button7, 2, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button8, 2, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button9, 3, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button10, 3, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button11, 4, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Button12, 4, 1)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(15, 723)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 2
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(583, 61)
-        Me.TableLayoutPanel2.TabIndex = 3
-        '
-        'Button4
-        '
-        Me.Button4.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button4.Location = New System.Drawing.Point(3, 33)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(110, 25)
-        Me.Button4.TabIndex = 1
-        Me.Button4.Text = "Button4"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Button5
-        '
-        Me.Button5.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button5.Location = New System.Drawing.Point(119, 3)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(110, 24)
-        Me.Button5.TabIndex = 2
-        Me.Button5.Text = "Button5"
-        Me.Button5.UseVisualStyleBackColor = True
-        Me.Button5.Visible = False
-        '
-        'Button6
-        '
-        Me.Button6.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button6.Location = New System.Drawing.Point(119, 33)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(110, 25)
-        Me.Button6.TabIndex = 3
-        Me.Button6.Text = "Button6"
-        Me.Button6.UseVisualStyleBackColor = True
-        '
-        'Button7
-        '
-        Me.Button7.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button7.Location = New System.Drawing.Point(235, 3)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(110, 24)
-        Me.Button7.TabIndex = 4
-        Me.Button7.Text = "Button7"
-        Me.Button7.UseVisualStyleBackColor = True
-        Me.Button7.Visible = False
-        '
-        'Button8
-        '
-        Me.Button8.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button8.Location = New System.Drawing.Point(235, 33)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(110, 25)
-        Me.Button8.TabIndex = 5
-        Me.Button8.Text = "Button8"
-        Me.Button8.UseVisualStyleBackColor = True
-        '
-        'Button9
-        '
-        Me.Button9.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button9.Location = New System.Drawing.Point(351, 3)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(110, 24)
-        Me.Button9.TabIndex = 6
-        Me.Button9.Text = "Button9"
-        Me.Button9.UseVisualStyleBackColor = True
-        Me.Button9.Visible = False
-        '
-        'Button10
-        '
-        Me.Button10.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button10.Location = New System.Drawing.Point(351, 33)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(110, 25)
-        Me.Button10.TabIndex = 7
-        Me.Button10.Text = "Button10"
-        Me.Button10.UseVisualStyleBackColor = True
-        '
-        'Button11
-        '
-        Me.Button11.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button11.Location = New System.Drawing.Point(467, 3)
-        Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(113, 24)
-        Me.Button11.TabIndex = 8
-        Me.Button11.Text = "Button11"
-        Me.Button11.UseVisualStyleBackColor = True
-        Me.Button11.Visible = False
-        '
-        'Button12
-        '
-        Me.Button12.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.Button12.Location = New System.Drawing.Point(467, 33)
-        Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(113, 25)
-        Me.Button12.TabIndex = 9
-        Me.Button12.Text = "Button12"
-        Me.Button12.UseVisualStyleBackColor = True
+        Me.Label2.Visible = False
         '
         'EIDH
         '
         Me.EIDH.Location = New System.Drawing.Point(2, 30)
         Me.EIDH.Name = "EIDH"
-        Me.EIDH.Size = New System.Drawing.Size(454, 295)
+        Me.EIDH.Size = New System.Drawing.Size(624, 295)
         Me.EIDH.TabIndex = 4
         Me.EIDH.UseCompatibleStateImageBehavior = False
         '
         'ListParagg
         '
         Me.ListParagg.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader12})
-        Me.ListParagg.Location = New System.Drawing.Point(307, 352)
+        Me.ListParagg.Location = New System.Drawing.Point(427, 456)
         Me.ListParagg.Name = "ListParagg"
-        Me.ListParagg.Size = New System.Drawing.Size(470, 306)
+        Me.ListParagg.Size = New System.Drawing.Size(465, 202)
         Me.ListParagg.TabIndex = 6
         Me.ListParagg.UseCompatibleStateImageBehavior = False
         Me.ListParagg.View = System.Windows.Forms.View.Details
@@ -488,7 +361,7 @@ Partial Class ADDITPARAGG
         Me.delete_button.Enabled = False
         Me.delete_button.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.delete_button.Image = CType(resources.GetObject("delete_button.Image"), System.Drawing.Image)
-        Me.delete_button.Location = New System.Drawing.Point(922, 347)
+        Me.delete_button.Location = New System.Drawing.Point(975, 331)
         Me.delete_button.Name = "delete_button"
         Me.delete_button.Size = New System.Drawing.Size(87, 69)
         Me.delete_button.TabIndex = 7
@@ -497,9 +370,9 @@ Partial Class ADDITPARAGG
         'SAVE
         '
         Me.SAVE.BackColor = System.Drawing.Color.Lime
-        Me.SAVE.Location = New System.Drawing.Point(781, 525)
+        Me.SAVE.Location = New System.Drawing.Point(980, 516)
         Me.SAVE.Name = "SAVE"
-        Me.SAVE.Size = New System.Drawing.Size(73, 68)
+        Me.SAVE.Size = New System.Drawing.Size(86, 68)
         Me.SAVE.TabIndex = 8
         Me.SAVE.Text = "ΚΛΕΙΣΙΜΟ  ΕΚΤΥΠΩΣΗ"
         Me.SAVE.UseVisualStyleBackColor = False
@@ -508,27 +381,28 @@ Partial Class ADDITPARAGG
         '
         Me.KATHG.Location = New System.Drawing.Point(2, 331)
         Me.KATHG.Name = "KATHG"
-        Me.KATHG.Size = New System.Drawing.Size(302, 327)
+        Me.KATHG.Size = New System.Drawing.Size(419, 327)
         Me.KATHG.TabIndex = 9
         Me.KATHG.UseCompatibleStateImageBehavior = False
         '
         'CKATHG
         '
         Me.CKATHG.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.CKATHG.Location = New System.Drawing.Point(656, 716)
+        Me.CKATHG.Location = New System.Drawing.Point(982, 679)
         Me.CKATHG.Name = "CKATHG"
         Me.CKATHG.Size = New System.Drawing.Size(80, 20)
         Me.CKATHG.TabIndex = 10
+        Me.CKATHG.Visible = False
         '
         'HDH_YPARXOYSA
         '
         Me.HDH_YPARXOYSA.BackColor = System.Drawing.Color.FromArgb(CType(CType(192, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.HDH_YPARXOYSA.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10, Me.ColumnHeader11})
         Me.HDH_YPARXOYSA.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
-        Me.HDH_YPARXOYSA.Location = New System.Drawing.Point(781, 30)
+        Me.HDH_YPARXOYSA.Location = New System.Drawing.Point(427, 331)
         Me.HDH_YPARXOYSA.MultiSelect = False
         Me.HDH_YPARXOYSA.Name = "HDH_YPARXOYSA"
-        Me.HDH_YPARXOYSA.Size = New System.Drawing.Size(272, 295)
+        Me.HDH_YPARXOYSA.Size = New System.Drawing.Size(465, 119)
         Me.HDH_YPARXOYSA.TabIndex = 12
         Me.HDH_YPARXOYSA.UseCompatibleStateImageBehavior = False
         Me.HDH_YPARXOYSA.View = System.Windows.Forms.View.Details
@@ -551,25 +425,17 @@ Partial Class ADDITPARAGG
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(663, 685)
+        Me.TextBox1.Location = New System.Drawing.Point(941, 653)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(299, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(127, 20)
         Me.TextBox1.TabIndex = 46
         Me.TextBox1.Text = "ΥΠΑΡΧΟΥΣΑ ΠΑΡΑΓΓΕΛΙΑ - ΤΣΕΚΑΡΕΤΕ ΑΝ ΘΕΛΕΤΕ ΑΚΥΡΩΣΗ ΕΙΔΟΥΣ"
         Me.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        '
-        'TextBox2
-        '
-        Me.TextBox2.Location = New System.Drawing.Point(307, 331)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(469, 20)
-        Me.TextBox2.TabIndex = 47
-        Me.TextBox2.Text = "ΠΡΟΣΘΕΤΗ ΠΑΡΑΓΓΕΛΙΑ"
-        Me.TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TextBox1.Visible = False
         '
         'PAYMENT
         '
-        Me.PAYMENT.Location = New System.Drawing.Point(922, 559)
+        Me.PAYMENT.Location = New System.Drawing.Point(979, 599)
         Me.PAYMENT.Name = "PAYMENT"
         Me.PAYMENT.Size = New System.Drawing.Size(87, 34)
         Me.PAYMENT.TabIndex = 48
@@ -578,7 +444,7 @@ Partial Class ADDITPARAGG
         '
         'typono_logar
         '
-        Me.typono_logar.Location = New System.Drawing.Point(922, 472)
+        Me.typono_logar.Location = New System.Drawing.Point(979, 472)
         Me.typono_logar.Name = "typono_logar"
         Me.typono_logar.Size = New System.Drawing.Size(87, 38)
         Me.typono_logar.TabIndex = 49
@@ -607,9 +473,9 @@ Partial Class ADDITPARAGG
         'PROSU2
         '
         Me.PROSU2.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader5, Me.ColumnHeader6, Me.ColumnHeader7})
-        Me.PROSU2.Location = New System.Drawing.Point(462, 28)
+        Me.PROSU2.Location = New System.Drawing.Point(632, 30)
         Me.PROSU2.Name = "PROSU2"
-        Me.PROSU2.Size = New System.Drawing.Size(313, 297)
+        Me.PROSU2.Size = New System.Drawing.Size(260, 297)
         Me.PROSU2.TabIndex = 50
         Me.PROSU2.UseCompatibleStateImageBehavior = False
         '
@@ -618,7 +484,7 @@ Partial Class ADDITPARAGG
         Me.bgale1.Enabled = False
         Me.bgale1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.bgale1.Image = CType(resources.GetObject("bgale1.Image"), System.Drawing.Image)
-        Me.bgale1.Location = New System.Drawing.Point(783, 407)
+        Me.bgale1.Location = New System.Drawing.Point(898, 615)
         Me.bgale1.Name = "bgale1"
         Me.bgale1.Size = New System.Drawing.Size(64, 43)
         Me.bgale1.TabIndex = 54
@@ -629,7 +495,7 @@ Partial Class ADDITPARAGG
         Me.bale1.Enabled = False
         Me.bale1.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(161, Byte))
         Me.bale1.Image = CType(resources.GetObject("bale1.Image"), System.Drawing.Image)
-        Me.bale1.Location = New System.Drawing.Point(783, 347)
+        Me.bale1.Location = New System.Drawing.Point(898, 567)
         Me.bale1.Name = "bale1"
         Me.bale1.Size = New System.Drawing.Size(64, 42)
         Me.bale1.TabIndex = 53
@@ -654,12 +520,22 @@ Partial Class ADDITPARAGG
         Me.b_trapezi.TabIndex = 56
         Me.b_trapezi.UseVisualStyleBackColor = True
         '
+        'TableView1
+        '
+        Me.TableView1.Location = New System.Drawing.Point(2, 662)
+        Me.TableView1.Name = "TableView1"
+        Me.TableView1.Size = New System.Drawing.Size(890, 133)
+        Me.TableView1.TabIndex = 57
+        Me.TableView1.UseCompatibleStateImageBehavior = False
+        '
         'ADDITPARAGG
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(1065, 743)
+        Me.ClientSize = New System.Drawing.Size(1262, 824)
+        Me.Controls.Add(Me.TableView1)
+        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Controls.Add(Me.b_trapezi)
         Me.Controls.Add(Me.trexon_eidos)
         Me.Controls.Add(Me.bgale1)
@@ -669,7 +545,6 @@ Partial Class ADDITPARAGG
         Me.Controls.Add(Me.PROSU2)
         Me.Controls.Add(Me.typono_logar)
         Me.Controls.Add(Me.PAYMENT)
-        Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.HDH_YPARXOYSA)
         Me.Controls.Add(Me.CKATHG)
@@ -678,7 +553,6 @@ Partial Class ADDITPARAGG
         Me.Controls.Add(Me.delete_button)
         Me.Controls.Add(Me.ListParagg)
         Me.Controls.Add(Me.EIDH)
-        Me.Controls.Add(Me.TableLayoutPanel2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.OTONH)
         Me.Controls.Add(Me.Label2)
@@ -691,7 +565,6 @@ Partial Class ADDITPARAGG
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.TableLayoutPanel1.ResumeLayout(False)
-        Me.TableLayoutPanel2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -716,16 +589,6 @@ Partial Class ADDITPARAGG
     Friend WithEvents SYSKEYASIA As System.Windows.Forms.Label
     Friend WithEvents KauTimh As System.Windows.Forms.Label
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents TableLayoutPanel2 As System.Windows.Forms.TableLayoutPanel
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents Button8 As System.Windows.Forms.Button
-    Friend WithEvents Button9 As System.Windows.Forms.Button
-    Friend WithEvents Button10 As System.Windows.Forms.Button
-    Friend WithEvents Button11 As System.Windows.Forms.Button
-    Friend WithEvents Button12 As System.Windows.Forms.Button
     Friend WithEvents EIDH As System.Windows.Forms.ListView
     Friend WithEvents ListParagg As System.Windows.Forms.ListView
     Friend WithEvents delete_button As System.Windows.Forms.Button
@@ -742,7 +605,6 @@ Partial Class ADDITPARAGG
     Friend WithEvents ColumnHeader10 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader11 As System.Windows.Forms.ColumnHeader
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
     Friend WithEvents PAYMENT As System.Windows.Forms.Button
     Friend WithEvents typono_logar As System.Windows.Forms.Button
     Friend WithEvents CSXOLIA As System.Windows.Forms.TextBox
@@ -756,4 +618,5 @@ Partial Class ADDITPARAGG
     Friend WithEvents bale1 As System.Windows.Forms.Button
     Friend WithEvents trexon_eidos As System.Windows.Forms.Label
     Friend WithEvents b_trapezi As System.Windows.Forms.Button
+    Friend WithEvents TableView1 As System.Windows.Forms.ListView
 End Class

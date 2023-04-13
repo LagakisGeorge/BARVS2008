@@ -241,7 +241,7 @@ err:
 
     Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles bNeaParaggelia.Click
         ' NEAPARAGG.ShowDialog()
-        Dim F As New tables
+        Dim F As New ADDITPARAGG   '. tables
         F.MdiParent = MDIParent1
 
         F.Show()
