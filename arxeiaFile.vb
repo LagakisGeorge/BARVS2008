@@ -646,7 +646,7 @@
 
 
     Sub CreateMyListView()
-        listView1.Bounds = New Rectangle(New Point(10, 580), New Size(380, 400))
+        listView1.Bounds = New Rectangle(New Point(10, 480), New Size(580, 300))
         listView1.Items.Clear()
 
         'CreateMyListView()
@@ -685,7 +685,7 @@
 
 
         Dim DTT As New DataTable
-        ExecuteSQLQuery("select ONO+SPACE(2)+';'+str(ID) AS ONOMA, ID,PICTURE FROM KATHG order by ID ", DTT)
+        ExecuteSQLQuery("select isnull(ONO,' ')+SPACE(2)+';'+str(ID) AS ONOMA, ID,PICTURE FROM KATHG order by ID ", DTT)
 
 
 

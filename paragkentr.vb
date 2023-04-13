@@ -60,7 +60,7 @@ Public Class paragkentr
         CHECK_BARDIA()
 
         Dim dt As New DataTable
-        ExecuteSQLQuery("select * from LOGGING WHERE ID=1", dt)
+        ExecuteSQLQuery("select QUERY from LOGGING WHERE ID=1", dt)
         G_ADMIN_PW = dt(0)(0).ToString
 
 

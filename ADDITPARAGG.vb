@@ -688,37 +688,42 @@ err:
         If Mid(cPros, Len(cPros), 1) = "," Then
             cPros = Mid(cPros, 1, Len(cPros) - 1)
         End If
-        ExecuteSQLQuery("SELECT * FROM XAR1 where ID IN (" + cPros + ")", DTT2)
+        If IsDBNull(cPros) Then cPros = ""
 
-        'Try
-        For i As Integer = 0 To DTT2.Rows.Count - 1
-            imgList.Images.Add(Bitmap.FromFile("default.png"))
-            '   For K11 As Integer = 0 To result.Length - 1
-            'If result(K11) = DTT2(i)("ID").ToString Then
-            Try
-                ' imgList.Images.Add(Bitmap.FromFile("default.png"))
-                'imgList.Images.Add(Bitmap.FromFile(DTT2(i)("PICTURE").ToString))
+        If Len(cPros) > 0 Then
+            ExecuteSQLQuery("SELECT * FROM XAR1 where ID IN (" + cPros + ")", DTT2)
 
-                Dim item As New ListViewItem(DTT2(i)("ONO").ToString, i) ' RancomClass.Next(0, 10) Mod 2)
-                Items.Add(item)
+            'Try
+            For i As Integer = 0 To DTT2.Rows.Count - 1
+                imgList.Images.Add(Bitmap.FromFile("default.png"))
+                '   For K11 As Integer = 0 To result.Length - 1
+                'If result(K11) = DTT2(i)("ID").ToString Then
+                Try
+                    ' imgList.Images.Add(Bitmap.FromFile("default.png"))
+                    'imgList.Images.Add(Bitmap.FromFile(DTT2(i)("PICTURE").ToString))
 
-
-                'Dim newItem = New ListViewItem("Item Name", ImageList1.Images.IndexOfKey("Key"))
-                'LISTVIEW1.Items.Add(newItm)
-
+                    Dim item As New ListViewItem(DTT2(i)("ONO").ToString, i) ' RancomClass.Next(0, 10) Mod 2)
+                    Items.Add(item)
 
 
-            Catch ex As Exception
+                    'Dim newItem = New ListViewItem("Item Name", ImageList1.Images.IndexOfKey("Key"))
+                    'LISTVIEW1.Items.Add(newItm)
 
-            End Try
-            'End If
-            'Next
-        Next
+
+
+                Catch ex As Exception
+
+                End Try
+                'End If
+                'Next
+            Next
+        End If
+
         PROSU2.Items.AddRange(Items.ToArray)
 
         PROSU2.LargeImageList = imgList
 
-        TREXON_EIDOS.Text = EIDOS_LIST(index).ONOMA
+        trexon_eidos.Text = EIDOS_LIST(index).ONOMA
         EIDHVIEW.Enabled = False
 
         bale1.Enabled = False
@@ -1590,6 +1595,12 @@ err:
             End If
 
             vv.Print("Σύνολο :" + Space(17) + majia)
+            vv.Print("-")
+            vv.Print()
+            vv.Print()
+            vv.Print()
+            vv.Print()
+            vv.Print("--")
 
 
             vv.EndDoc()
