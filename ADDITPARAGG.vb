@@ -1091,7 +1091,7 @@ err:
 
         If ListParagg.Items.Count = 0 Then
 
-            ' Me.Close()
+            Me.Close()
             Exit Sub
 
         End If
@@ -1214,7 +1214,7 @@ err:
 
        
 
-        ' Me.Close()
+        Me.Close()
 
 
 
