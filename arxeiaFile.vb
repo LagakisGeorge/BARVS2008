@@ -780,7 +780,7 @@
                 XAR2.Text = ""
                 tPROSUETA.Text = ""
                 ckathg.Text = ""
-
+                ektypoths.Text = "1"
 
 
 

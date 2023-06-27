@@ -49,7 +49,7 @@
 
             ListBox2.Items.Add(DT2(k)("TRAPEZI").ToString + " / " + Format(If(IsDBNull(DT2(k)("AJIA")), 0, DT2(k)("AJIA")), "###0.00") + " / " + DT2(k)("TROPOS").ToString + " /  " + DT2(k)("CH1").ToString + " /  " + DT2(k)("CH2").ToString + ";" + DT2(k)("ID").ToString + ";=>")
 
-            ListBox2.Items.Add("Μετρ: " + DT2(k)("CASH").ToString + "Πιστ1: " + DT2(k)("pis1").ToString + "Πιστ2: " + DT2(k)("PIS2").ToString + "Κερασμ: " + DT2(k)("KERA").ToString)
+            ListBox2.Items.Add("Μετρ: " + DT2(k)("CASH").ToString + "Πιστ1: " + DT2(k)("pis1").ToString + "Εκπτ: " + DT2(k)("PIS2").ToString + "Κερασμ: " + DT2(k)("KERA").ToString)
             s1 = s1 + DT2(k)("CASH")
             s2 = s2 + DT2(k)("pis1")
             s3 = s3 + DT2(k)("PIS2")
@@ -57,7 +57,7 @@
             ListBox2.Items.Add(" ")
         Next
         ListBox2.Items.Add("ΣΥΝΟΛΑ-----------------------")
-        ListBox2.Items.Add("Μετρ: " + s1.ToString + "Πιστ1: " + s2.ToString + "Πιστ2: " + s3.ToString + "Κερασμ: " + s4.ToString)
+        ListBox2.Items.Add("Μετρ: " + s1.ToString + "Πιστ1: " + s2.ToString + "Εκπτ: " + s3.ToString + "Κερασμ: " + s4.ToString)
         ListBox2.Items.Add("=====================")
 
 

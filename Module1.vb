@@ -26,7 +26,7 @@ Module Module1
     Public gBardia As Long
     Public gFilePelaton As String ' = Split(lineexcel, ";")(0)
     Public gFileEidon As String  ' = Split(lineexcel, ";")(1)
-
+    Public SQLDT As DataTable
     Public gUser As Integer ' τον user τον καταλαβαίνει από το tablet
     Public gIsAdmin As Integer ' einai o dieythintis
     Public G_ADMIN_PW As String
@@ -509,7 +509,66 @@ Module Module1
 
 
 
+    Public Function checkServer() As Boolean
+        Dim c As String
+        '  gMHNAS = Format(Now, "yyyymm")
+        '  gMHNAS = InputBox("ΜΗΝΑΣ ΕΡΓΑΣΙΑΣ ", "", gMHNAS)
 
+        c = Application.StartupPath & "\Config.ini"
+        Dim gConSQL As String
+
+        Dim tmpstr As String = ""
+        Dim c2() As String
+        ' c2(1) = ""
+        Dim c3 As String
+        Try
+
+            FileOpen(1, c, OpenMode.Input, OpenAccess.Read, OpenShare.Default)
+            c3 = ""
+            Input(1, tmpstr)
+            Input(1, c3)
+            FileClose(1)
+            tmpstr = tmpstr + c3 'Server=DELLAGAKIS\SQL17,51403;Database=BARELL;UID=sa;pwd=12345678;
+
+            If Split(tmpstr, ";")(4) = "" Then
+                'network
+                gCONNECT = "Provider=SQLOLEDB.1;Persist Security Info=True;" & _
+                           "Data Source=" & Split(tmpstr, ";")(1) & _
+                           ";Initial Catalog=" & Trim(Split(tmpstr, ";")(5)) & _
+                           ";User Id=" & Split(tmpstr, ";")(2) & _
+                           ";Password=" & Split(tmpstr, ";")(3)
+                ' gConSQL = "Server=" & Split(tmpstr, ":")(1) & ";Database=" & Split(tmpstr, ":")(5) & ";User Id=" & Split(tmpstr, ":")(2) & ";Password=" & Split(tmpstr, ":")(3)
+                'Server=myServerName\myInstanceName;Database=myDataBase;User Id=myUsername;
+                'Password=myPassword;
+            Else
+                'local
+                'MsgBox(Split(tmpStr, ":")(1))
+                gCONNECT = "Provider=SQLOLEDB;Server=" & Split(tmpstr, ":")(1) & _
+                           ";Database=MERCURY; Trusted_Connection=yes;"
+
+                gConSQL = "Data Source=" & Split(tmpstr, ":")(1) & ";Integrated Security=True;database=MERCURY"
+                'cnString = "Data Source=localhost\SQLEXPRESS;Integrated Security=True;database=YGEIA"
+
+
+                '
+            End If
+
+            Dim sqlCon As New OleDbConnection
+            sqlCon.ConnectionString = gCONNECT
+            sqlCon.Open()
+            checkServer = True
+            sqlCon.Close()
+
+            Dim GDB As New ADODB.Connection
+            GDB.Open(gCONNECT)
+            GDB.Close()
+
+        Catch ex As Exception
+            checkServer = False
+            MsgBox("εξοδος λογω μη σύνδεσης με βάση δεδομένων. Ελέγξτε το config.ini")
+            'End
+        End Try
+    End Function
 
 
 

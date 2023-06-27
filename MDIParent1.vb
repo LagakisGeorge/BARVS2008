@@ -1,6 +1,10 @@
 ﻿Imports System.Windows.Forms
+Imports Microsoft.VisualBasic.PowerPacks.Printing.Compatibility.VB6
 
 Public Class MDIParent1
+
+    Dim vv As New Printer
+
 
     Private Sub ShowNewForm(ByVal sender As Object, ByVal e As EventArgs) Handles NewToolStripMenuItem.Click, NewWindowToolStripMenuItem.Click
         ' Create a new instance of the child form.
@@ -91,6 +95,107 @@ Public Class MDIParent1
         arxeia.MdiParent = Me
         paragkentr.MdiParent = Me
         paragkentr.Show()
+
+    End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptionsToolStripMenuItem.Click
+        utilities.Show()
+
+    End Sub
+
+    Private Sub Timer1_Tick(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Timer1.Tick
+        'ALTER TABLE PARAGG ADD PRINTER INT NOT NULL DEFAULT 1
+        'Dim dt5 As New DataTable
+
+        'Dim SQL As String
+        'SQL = "insert into PARAGG (TRAPEZI , IDPARAGG , POSO , TIMH , ONO , PROSUETA , CH1 , NUM1 , NUM2 , ENERGOS , PRINTER ) SELECT   TRAPEZI , IDPARAGG , POSO , TIMH , ONO , PROSUETA , CH1SXOLIA , NUM1PLIROMENO , NUM2 , ENERGOSTYPOMENO , PRINTER  FROM  PARAGGPDA  WHERE ISNULL(ENERGOSTYPOMENO,0)=0"
+        'ExecuteSQLQuery(SQL, dt5)
+        'ExecuteSQLQuery("UPDATE", dt5)
+
+
+    End Sub
+    Private Sub PRINTPARAGG()
+
+
+        'ExecuteSQLQuery(SQL, dt5)
+
+
+
+        vv.FontSize = 14
+        vv.FontBold = True
+        Dim p_Trapezi As String = "000"
+
+        If Val(p_Trapezi) > 900 Then
+            vv.Print("*** ΠΑΚΕΤΟ ***")
+            vv.Print(" ΠΑΚΕΤΟ " + p_Trapezi + "   * " + Format(Now, "hh:mm"))
+
+        Else
+            vv.Print("ΤΡΑΠΕΖΙ " + p_Trapezi + "   * " + Format(Now, "hh:mm"))
+        End If
+        vv.Print("===========")
+
+        Dim DT8 As New DataTable
+        ExecuteSQLQuery("SELECT   TRAPEZI , IDPARAGG , POSO , TIMH , ONO , PROSUETA , CH1SXOLIA , NUM1PLIROMENO , NUM2 , ENERGOSTYPOMENO , PRINTER  FROM  PARAGGPDA  WHERE ISNULL(ENERGOSTYPOMENO,0)=0", DT8)
+
+
+        Dim c2 As String = ""
+        For K As Integer = 0 To DT8.Rows.Count - 1
+
+
+            Dim MDATE As String
+            If InStr(gCONNECT, "MDB") > 0 Then
+                MDATE = "#" + Format(Now, "dd/MM/yyyy") + "#"
+            Else
+                MDATE = "'" + Format(Now, "MM/dd/yyyy") + "'"
+            End If
+
+          
+
+
+
+            Dim SQL As String = ""
+
+            'TYPVNV TO EIDOS
+
+            If nNull(DT8.Rows(K)("POSO")) > 1 Then
+                vv.Print(DT8.Rows(K)("POSO").ToString + " X ")
+            End If
+
+            If nNull(DT8.Rows(K)("TIMH")) < 0 Then
+                vv.Print("******* ΑΚΥΡΩΣΗ **********")
+            End If
+
+
+            vv.Print(DT8.Rows(K)("ono"))
+
+
+
+
+
+            Dim parts As String() = c2.Split(New Char() {","c})
+
+            ' Loop through result strings with For Each.
+            Dim part As String
+            For Each part In parts
+                'Console.WriteLine(part)
+                vv.Print("*" + part)
+            Next
+
+
+            'If Len(Trim(ListParagg.Items(K).SubItems(4).Text)) > 0 Then
+            '    vv.Print("*" + Trim(ListParagg.Items(K).SubItems(4).Text))
+            'End If
+
+            vv.Print("-------------")
+
+
+
+        Next
+
+
+
+
+
 
     End Sub
 End Class
