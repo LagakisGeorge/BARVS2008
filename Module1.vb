@@ -31,6 +31,15 @@ Module Module1
     Public gIsAdmin As Integer ' einai o dieythintis
     Public G_ADMIN_PW As String
 
+    Public gPrinter1 As String
+    Public gPrinter2 As String
+    Public gPrinter3 As String
+
+
+
+
+
+
     'Module Module1
     Dim WithEvents pd As PrintDocument = New PrintDocument
 

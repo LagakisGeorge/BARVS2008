@@ -181,6 +181,13 @@
 
     Private Sub exodos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles exodos.Click
         Me.Close()
+        Dim n As Integer = MDIParent1.TabControl1.TabIndex
+        MDIParent1.TabControl1.TabPages.Remove(MDIParent1.TabControl1.SelectedTab)
+        Dim l = MDIParent1.TabControl1.TabPages.Count
+        MDIParent1.TabControl1.SelectTab(l - 1)
+
+
+
     End Sub
 
     Private Sub tables_Paint(ByVal sender As Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Me.Paint
